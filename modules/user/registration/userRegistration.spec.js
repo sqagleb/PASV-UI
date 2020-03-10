@@ -8,6 +8,8 @@ import {
   pageRegisterData,
   successfulNotificationData,
 } from '../_data/userRegistration.data';
+import axios from 'axios';
+import { expect } from "chai";
 
 describe('USER REGISTRATION', () => {
   before(
@@ -95,5 +97,20 @@ describe('USER REGISTRATION', () => {
     const actual = Notification.title.getText();
     const expected = successfulNotificationData.successfulNotification;
     expect(actual).eq(expected);
+  });
+
+  it('should verify from DB user by email', async () => {
+    const response = await axios({
+      method: 'get',
+      url: `https://server-stage.pasv.us/user/email/${newUserData.email}`,
+      headers: {
+        Authorization: process.env.ADMIN_TOKEN,
+      },
+    })
+      .then(r => r)
+      .catch(e => e);
+
+    expect(response.status).eq(200);
+    expect(response.data.payload.name).eq(`${newUserData.firstName} ${newUserData.lastName}`);
   });
 });
