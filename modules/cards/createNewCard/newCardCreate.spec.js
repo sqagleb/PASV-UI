@@ -109,6 +109,7 @@ describe('CREATE NEW CARD -- POSITIVE', () => {
     flashCardId = response.data.payload.flashCardId;
     expect(response.status).eq(200);
     expect(response.data.success).true;
+    expect(flashCardId.length).eq(24);
 
   });
 
