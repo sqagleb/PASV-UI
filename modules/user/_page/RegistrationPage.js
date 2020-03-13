@@ -37,6 +37,10 @@ class RegistrationPage extends AppPage {
     return $('//form//select[@name="englishLevel"]');
   }
 
+  get countryOption() {
+    return $('//form//select[@name="countryName"]');
+  }
+
   get submitBtn() {
     return $('//form//button[@type="submit"]');
   }

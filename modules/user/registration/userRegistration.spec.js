@@ -76,6 +76,10 @@ describe('USER REGISTRATION', () => {
     expect(element.isEnabled()).to.be.false;
   });
 
+  it('should choose Country from dropdown menu', () => {
+    RegistrationPage.countryOption.selectByVisibleText(newUserData.country);
+  });
+
   it('should choose English level from dropdown menu', () => {
     RegistrationPage.englishLevelOption.selectByVisibleText(newUserData.englishLevel);
   });

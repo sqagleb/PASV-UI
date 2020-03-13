@@ -10,6 +10,7 @@ const newUserData = {
   about: 'I am a student',
   goals: 'eat sleep code repeat',
   englishLevel: 'Upper intermediate',
+  country : 'USA',
 };
 
 const userRegisteredData = {
