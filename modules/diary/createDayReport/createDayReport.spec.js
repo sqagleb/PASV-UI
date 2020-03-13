@@ -9,6 +9,9 @@ import {
   instructionsToCheckMarks
 } from '../_data/createDayReport.data';
 
+import axios from "axios";
+import {expect} from "chai";
+
 describe('CREATE DAY REPORT', () => {
   before('should login as STUDENT, navigate to Day Report page', () => {
     LoginPage.login(student);
@@ -86,4 +89,48 @@ describe('CREATE DAY REPORT', () => {
     LogoutPage.logout();
   });
 
+
+
+let diaryId;
+
+it('should create a day report for API test', async ()=> {
+  const response = await axios ({
+    method: 'post',
+    url: 'https://server-stage.pasv.us/diary',
+    data: {
+      description: 'API  Test Test Test Test Test ',
+      labels:  ["understood_everything", "code_practice"],
+      hours: 6,
+      morale: 7
+    },
+    headers: {
+      Authorization: process.env.ADMIN_TOKEN,
+    },
+  })
+      .then(res => res)
+      .catch(err => {
+        console.log('ERROR: ' + err);
+      });
+  expect(response.status).equal(200);
+  expect(response.data.message).eq('Diary created');
+  diaryId = response.data.payload.diaryId;
 });
+
+
+  it('should verify day report creation in DB', async ()=> {
+    const response = await axios ({
+      method: 'get',
+      url: `https://server-stage.pasv.us/diary/${diaryId}`,
+      headers: {
+        Authorization: process.env.ADMIN_TOKEN,
+      },
+    })
+        .then(res => res)
+        .catch(err => {
+          console.log('ERROR: ' + err);
+        });
+    expect(response.status).equal(200);
+    expect(response.data._id).eq(diaryId);
+  });
+});
+
