@@ -49,4 +49,5 @@ describe('DAILY REPORTS PAGE TESTING', () => {
   after('should logout', () => {
     LogoutPage.logout();
   });
+
 });
