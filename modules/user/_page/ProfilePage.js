@@ -2,7 +2,7 @@ import AppPage from '../../_page/AppPage';
 
 class ProfilePage extends AppPage {
   get createDayReportBtn() {
-    return $("//a[@class='btn btn-secondary']");
+    return $('[qa="create-day-report-button"]');
   }
 
   get likeBtn() {
@@ -13,20 +13,16 @@ class ProfilePage extends AppPage {
     return $("//button[@class='btn btn-secondary']");
   }
 
-  get updateListNotification() {
-    return $("//h4[@class='notification-title']");
-  }
-
   get codeWarsIcon() {
-    return $('//a[@qa="codewars"]');
+    return $('[qa="codewars"]');
   }
 
   get facebookIcon() {
-    return $('//a[@qa="facebook"]');
+    return $('[qa="facebook"]');
   }
 
   get linkedInIcon() {
-    return $('//a[@qa="linkedIn"]');
+    return $('[qa="linkedIn"]');
   }
 
   get coinTotal() {

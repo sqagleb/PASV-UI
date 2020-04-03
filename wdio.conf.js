@@ -21,6 +21,13 @@ exports.config = {
   // directory is where your package.json resides, so `wdio` will be called from there.
   //
   specs: ['./modules/**/*.spec.js'],
+  suites: {
+    cards: ['./modules/cards/**/*spec.js'],
+    courses: ['./modules/courses/**/*spec.js'],
+    diary: ['./modules/diary/**/*spec.js'],
+    groups: ['./modules/groups/**/*spec.js'],
+    user: ['./modules/user/**/*spec.js']
+  },
   // Patterns to exclude.
   exclude: [
     // 'path/to/excluded/files'
