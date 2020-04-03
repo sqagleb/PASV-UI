@@ -1,3 +1,5 @@
+import { expect } from 'chai';
+
 class Menu {
 
     get profileDropdown() {
@@ -46,6 +48,14 @@ class Menu {
 
     get mainBar (){
         return $('//div[@id="main-bar"]');
+    }
+
+    verifyTitle(title) {
+        expect(browser.getTitle()).equal(title);
+    }
+
+    verifyElementText(element, text) {
+        expect( element.getText()).eq(text)
     }
 }
 

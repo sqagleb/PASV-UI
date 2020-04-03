@@ -1,22 +1,14 @@
 import { expect } from 'chai';
+import Menu from './Menu';
+import { text } from '../user/_data/profilePage.data';
 
 class Notification {
-  successIsDisplayed() {
-    expect($('.notification-success').isDisplayed()).true;
+  successMsgDisplayed() {
+    browser.waitUntil(() => $('.notification-success').isDisplayed(),5000, 'Wrong / no notification displayed');
   }
 
-  failIsDisplayed() {
-    expect($('.notification-error').isDisplayed()).true;
-  }
-
-// no longer to be used, instead use successIsDisplayed()
-  get success() {
-    return $('//div[@class="notification notification-success notification-visible"]');
-  }
-
-// no longer to be used, instead use failIsDisplayed()
-  get fail() {
-    return $('//div[@class="notification notification-error notification-visible"]');
+  failMsgDisplayed() {
+    browser.waitUntil(() => $('.notification-error').isDisplayed(),5000, 'Wrong / no notification displayed')
   }
 
   get title() {
@@ -26,6 +18,7 @@ class Notification {
   get invalidMsg() {
     return $('//div[contains(@class, "form")]//div[contains(text(), "Invalid")]');
   }
+
 }
 
 export default new Notification();

@@ -16,6 +16,7 @@ describe('USER REGISTRATION', () => {
   });
 
   it('should get successful notification about user registration in the system', () => {
-   Notification.successIsDisplayed();
+   Notification.successMsgDisplayed();
   });
+
 });
