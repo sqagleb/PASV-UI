@@ -4,7 +4,12 @@
   "description": "PASV-UI Project",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/wdio wdio.conf.js"
+    "test": "./node_modules/.bin/wdio wdio.conf.js",
+    "cards": "./node_modules/.bin/wdio wdio.conf.js --suite cards",
+    "courses": "./node_modules/.bin/wdio wdio.conf.js --suite courses",
+    "diary": "./node_modules/.bin/wdio wdio.conf.js --suite diary",
+    "groups": "./node_modules/.bin/wdio wdio.conf.js --suite groups",
+    "user": "./node_modules/.bin/wdio wdio.conf.js --suite user"
   },
   "repository": {
     "type": "git",
