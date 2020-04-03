@@ -4,12 +4,12 @@
   "description": "PASV-UI Project",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/wdio wdio.conf.js",
-    "cards": "./node_modules/.bin/wdio wdio.conf.js --suite cards",
-    "courses": "./node_modules/.bin/wdio wdio.conf.js --suite courses",
-    "diary": "./node_modules/.bin/wdio wdio.conf.js --suite diary",
-    "groups": "./node_modules/.bin/wdio wdio.conf.js --suite groups",
-    "user": "./node_modules/.bin/wdio wdio.conf.js --suite user"
+    "test": "wdio wdio.conf.js",
+    "cards": "wdio wdio.conf.js --suite cards",
+    "courses": "wdio wdio.conf.js --suite courses",
+    "diary": "wdio wdio.conf.js --suite diary",
+    "groups": "wdio wdio.conf.js --suite groups",
+    "user": "wdio wdio.conf.js --suite user"
   },
   "repository": {
     "type": "git",
@@ -32,6 +32,7 @@
     "@wdio/spec-reporter": "^5.18.7",
     "@wdio/sync": "^5.18.7",
     "chromedriver": "^80.0.1",
+    "faker": "^4.1.0",
     "prettier": "1.19.1",
     "wdio-chromedriver-service": "^5.0.2",
     "wdio-selenium-standalone-service": "0.0.12"

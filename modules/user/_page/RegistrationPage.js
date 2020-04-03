@@ -1,4 +1,7 @@
 import AppPage from '../../_page/AppPage';
+import { newUser, H1RegisterPage, H1LoginPage } from '../_data/userRegistration.data';
+import { urlData } from '../../_data/url.data';
+import { expect } from "chai";
 
 class RegistrationPage extends AppPage {
   get p() {
@@ -33,28 +36,35 @@ class RegistrationPage extends AppPage {
     return $('//form//textarea[@name="goals"]');
   }
 
-  get englishLevelOption() {
-    return $('//form//select[@name="englishLevel"]');
-  }
-
   get countryOption() {
     return $('//form//select[@name="countryName"]');
+  }
+
+  get englishLevelOption() {
+    return $('//form//select[@name="englishLevel"]');
   }
 
   get submitBtn() {
     return $('//form//button[@type="submit"]');
   }
 
-  userRegistration(role) {
-    this.firstNameInput.setValue(role.firstName);
-    this.lastNameInput.setValue(role.lastName);
-    this.cellPhoneNumberInput.setValue(role.phone);
-    this.emailInput.setValue(role.email);
-    this.passwordInput.setValue(role.password);
-    this.aboutInput.setValue(role.about);
-    this.myGoalsInput.setValue(role.goals);
-    this.englishLevelOption.selectByVisibleText(role.englishLevel);
+  openPageVerifyH1() {
+    this.open(urlData.registerUrl);
+    browser.waitUntil(() => super.h1.getText() === H1RegisterPage, 5000);
+  }
+// method for create new user
+  newUserRegisterVerifyH1() {
+    this.firstNameInput.setValue(newUser.firstName);
+    this.lastNameInput.setValue(newUser.lastName);
+    this.cellPhoneNumberInput.setValue(newUser.phone);
+    this.emailInput.setValue(newUser.email);
+    this.passwordInput.setValue(newUser.password);
+    this.aboutInput.setValue(newUser.about);
+    this.myGoalsInput.setValue(newUser.goals);
+    this.countryOption.selectByVisibleText(newUser.country);
+    this.englishLevelOption.selectByVisibleText(newUser.englishLevel);
     this.submitBtn.click();
+    browser.waitUntil(() => this.h1.getText() === H1LoginPage, 5000);
   }
 }
 

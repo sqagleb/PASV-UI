@@ -1,24 +1,34 @@
+// https://github.com/marak/Faker.js/
+import faker from  'faker'
+
+const H1RegisterPage = 'User Register';
+const H1LoginPage = 'User Login';
+
+const firstName = faker.name.firstName();
+const lastName = faker.name.lastName();
 const email = Math.random() + 'test1@gmail.com';
 const password = 'password';
 
-const newUserData = {
-  firstName: 'John',
-  lastName: 'Morgan',
+// data to create new User:
+const newUser = {
+  firstName: firstName,
+  lastName: lastName,
   password: password,
-  phone: '14158706170',
+  phone: 12345434567,
   email: email,
-  about: 'I am a student',
+  about: 'eat sleep code repeat',
   goals: 'eat sleep code repeat',
   englishLevel: 'Upper intermediate',
-  country : 'USA',
+  country : 'Belarus',
 };
 
+// shouldn't use
 const userRegisteredData = {
   firstName: 'John',
   lastName: 'Morgan',
   password: 'qwqwqw',
   phone: '14158706170',
-  email: 'irina_ger@yahoo.com',
+ // email: 'irina_ger@yahoo.com',
   about: 'I am a student',
   goals: 'eat sleep code repeat',
   englishLevel: 'Upper intermediate',
@@ -36,4 +46,4 @@ const successfulNotificationData = {
 
 const errorNotificationData = 'User with this e-mail exists';
 
-export { newUserData, userRegisteredData, pageRegisterData, successfulNotificationData, errorNotificationData };
+export { H1RegisterPage, H1LoginPage, newUser, userRegisteredData, pageRegisterData, successfulNotificationData, errorNotificationData };
