@@ -39,7 +39,7 @@ describe('START THE COURSE (AS A STUDENT)', () => {
   });
 
   it('opened course page should have a correct h1 equal to the name of the course', () => {
-    const actual = CourseStartPage.h1.getText();
+    const actual = CourseStartPage.header.getText();
     const expected = newCourseCreate.courseName;
     expect(actual).eq(expected);
   });

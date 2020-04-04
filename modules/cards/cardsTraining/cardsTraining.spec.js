@@ -11,7 +11,7 @@ describe('CARDS TRAINING', () => {
   before('login as student and open Cards page from Home page', () => {
     LoginPage.login(student);
     Menu.cardsLink.click();
-    browser.waitUntil(() => FlashCardsPage.h1.getText() === 'FlashCards', 2000);
+    browser.waitUntil(() => FlashCardsPage.header.getText() === 'FlashCards', 2000);
   });
 
   it('should find `Test Group` group and click', () => {

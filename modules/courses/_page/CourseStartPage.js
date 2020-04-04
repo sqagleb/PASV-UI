@@ -6,7 +6,7 @@ class CourseStartPage extends AppPage {
     return $(`//a[text()="${newCourseCreate.courseName}"]`).click();
   }
 
-  get h1() {
+  get header() {
     return $('//h1');
   }
 

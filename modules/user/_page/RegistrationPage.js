@@ -1,13 +1,8 @@
 import AppPage from '../../_page/AppPage';
 import { newUser, H1RegisterPage, H1LoginPage } from '../_data/userRegistration.data';
-import { urlData } from '../../_data/url.data';
-import { expect } from "chai";
+import MainPage from '../../_page/MainPage';
 
 class RegistrationPage extends AppPage {
-  get p() {
-    return $('//p');
-  }
-
   get firstNameInput() {
     return $('//form//input[@name="firstName"]');
   }
@@ -48,11 +43,11 @@ class RegistrationPage extends AppPage {
     return $('//form//button[@type="submit"]');
   }
 
-  openPageVerifyH1() {
-    this.open(urlData.registerUrl);
-    browser.waitUntil(() => super.h1.getText() === H1RegisterPage, 5000);
+  open() {
+    super.open('https://stage.pasv.us/user/register');
   }
-// method for create new user
+
+  // method for create new user
   newUserRegisterVerifyH1() {
     this.firstNameInput.setValue(newUser.firstName);
     this.lastNameInput.setValue(newUser.lastName);
@@ -63,9 +58,8 @@ class RegistrationPage extends AppPage {
     this.myGoalsInput.setValue(newUser.goals);
     this.countryOption.selectByVisibleText(newUser.country);
     this.englishLevelOption.selectByVisibleText(newUser.englishLevel);
-    this.submitBtn.click();
-    browser.waitUntil(() => this.h1.getText() === H1LoginPage, 5000);
+    MainPage.smartClick(this.submitBtn);
+    browser.waitUntil(() => MainPage.header.getText() === H1LoginPage, 5000);
   }
 }
-
 export default new RegistrationPage();

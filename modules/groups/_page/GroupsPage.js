@@ -9,7 +9,7 @@ class GroupsPage extends AppPage {
     return browser.$('//a[@qa="groups-link"]');
   }
 
-  get h1() {
+  get header() {
     return browser.$('//h1');
   }
 

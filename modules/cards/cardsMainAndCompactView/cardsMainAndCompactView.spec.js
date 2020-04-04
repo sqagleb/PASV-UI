@@ -14,12 +14,12 @@ describe('CARDS MAIN VIEW AND COMPACT VIEW', () => {
 
   it('should open `FlashCards` page', () => {
     FlashCardsPage.open();
-    expect(pageTestData.title).equal(FlashCardsPage.h1.getText());
+    expect(pageTestData.title).equal(FlashCardsPage.header.getText());
   });
 
   it('should open a specified `Flash Card`', () => {
     browser.$(groupNameLink).click();
-    expect(pageTestData.groupName).equal(FlashCardsPage.h1.getText());
+    expect(pageTestData.groupName).equal(FlashCardsPage.header.getText());
   });
 
   it('should redirect to `Main view`', () => {

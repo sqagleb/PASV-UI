@@ -14,7 +14,7 @@ describe('USER REGISTRATION -- NEGATIVE -- DUPLICATE REGISTRATION', () => {
   });
 
   it('should already registered user after submitting registration form get error notification', () => {
-    RegistrationPage.userRegistration(userRegisteredData);
+    RegistrationPage.newUserRegisterVerifyH1(userRegisteredData);
     browser.waitUntil(() => Notification.title.getText() === errorNotificationData, 3000);
   });
 });

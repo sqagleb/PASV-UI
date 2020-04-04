@@ -1,7 +1,7 @@
 import AppPage from './AppPage';
 
 class HomePage extends AppPage {
-  get h1() {
+  get header() {
     return $('//h1');
   }
 

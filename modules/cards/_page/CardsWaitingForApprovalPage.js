@@ -6,7 +6,7 @@ class CardsWaitingForApprovalPage extends AppPage {
     return browser.$('//a[@qa="cards-link"]');
   }
 
-  get h1(){
+  get header(){
     return browser.$('//h1');
   }
 

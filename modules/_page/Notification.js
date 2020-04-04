@@ -1,6 +1,3 @@
-import { expect } from 'chai';
-import Menu from './Menu';
-import { text } from '../user/_data/profilePage.data';
 
 class Notification {
   successMsgDisplayed() {
