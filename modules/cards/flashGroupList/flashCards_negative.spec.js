@@ -10,7 +10,7 @@ describe('CARDS/FLASHCARDS --NEGATIVE', () => {
 
   it('should check `FlashCards` page title', () => {
     FlashCardsPage.openCardsMenu().click();
-    const actual = FlashCardsPage.h1.getText();
+    const actual = FlashCardsPage.header.getText();
     const expected = 'Flash Cards';
     expect(actual).not.eq(expected);
   });

@@ -5,7 +5,7 @@ class GroupRating extends AppPage {
     return $('//a[contains(text(),"Rating")]');
   }
 
-  get h1() {
+  get header() {
     return $('//h1');
   }
 

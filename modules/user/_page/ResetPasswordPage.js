@@ -1,7 +1,7 @@
 import AppPage from '../../_page/AppPage';
 
 class ResetPasswordPage extends AppPage {
-  get h1() {
+  get header() {
     return $('//h1');
   }
 

@@ -1,10 +1,8 @@
 import AppPage from '../../_page/AppPage';
+import { newUser, H1RegisterPage, H1LoginPage } from '../_data/userRegistration.data';
+import MainPage from '../../_page/MainPage';
 
 class RegistrationPage extends AppPage {
-  get p() {
-    return $('//p');
-  }
-
   get firstNameInput() {
     return $('//form//input[@name="firstName"]');
   }
@@ -33,29 +31,35 @@ class RegistrationPage extends AppPage {
     return $('//form//textarea[@name="goals"]');
   }
 
-  get englishLevelOption() {
-    return $('//form//select[@name="englishLevel"]');
-  }
-
   get countryOption() {
     return $('//form//select[@name="countryName"]');
+  }
+
+  get englishLevelOption() {
+    return $('//form//select[@name="englishLevel"]');
   }
 
   get submitBtn() {
     return $('//form//button[@type="submit"]');
   }
 
-  userRegistration(role) {
-    this.firstNameInput.setValue(role.firstName);
-    this.lastNameInput.setValue(role.lastName);
-    this.cellPhoneNumberInput.setValue(role.phone);
-    this.emailInput.setValue(role.email);
-    this.passwordInput.setValue(role.password);
-    this.aboutInput.setValue(role.about);
-    this.myGoalsInput.setValue(role.goals);
-    this.englishLevelOption.selectByVisibleText(role.englishLevel);
-    this.submitBtn.click();
+  open() {
+    super.open('https://stage.pasv.us/user/register');
+  }
+
+  // method for create new user
+  newUserRegisterVerifyH1() {
+    this.firstNameInput.setValue(newUser.firstName);
+    this.lastNameInput.setValue(newUser.lastName);
+    this.cellPhoneNumberInput.setValue(newUser.phone);
+    this.emailInput.setValue(newUser.email);
+    this.passwordInput.setValue(newUser.password);
+    this.aboutInput.setValue(newUser.about);
+    this.myGoalsInput.setValue(newUser.goals);
+    this.countryOption.selectByVisibleText(newUser.country);
+    this.englishLevelOption.selectByVisibleText(newUser.englishLevel);
+    MainPage.smartClick(this.submitBtn);
+    browser.waitUntil(() => MainPage.header.getText() === H1LoginPage, 5000);
   }
 }
-
 export default new RegistrationPage();

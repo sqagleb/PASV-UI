@@ -15,7 +15,7 @@ describe('CREATE NEW CARD -- POSITIVE', () => {
   });
 
   it('should check if an opened page is the `FlashCards` group page', () => {
-    const actual = FlashCardsPage.h1.getText();
+    const actual = FlashCardsPage.header.getText();
     expect(actual).equal(pageTitle);
   });
 

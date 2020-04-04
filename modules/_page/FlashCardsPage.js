@@ -6,7 +6,7 @@ class FlashCardsPage extends AppPage {
     super.open('https://stage.pasv.us/flash');
   }
 
-  get h1() {
+  get header() {
     return browser.$('//h1');
   }
 

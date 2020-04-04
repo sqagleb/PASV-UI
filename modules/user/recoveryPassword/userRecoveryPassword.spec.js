@@ -20,7 +20,7 @@ describe('USER PASSWORD RECOVERY', () => {
 
   it('should click Forgot password link and user redirected to Reset your password page', () => {
     LoginPage.forgotPasswordLink.click();
-    browser.waitUntil(() => ResetPasswordPage.h1.getText() === pagePswRecovery.h1, 500);
+    browser.waitUntil(() => ResetPasswordPage.header.getText() === pagePswRecovery.h1, 500);
   });
 
   it('should check if the button `Send password reset email` is displayed', () => {
@@ -58,7 +58,7 @@ describe('USER PASSWORD RECOVERY', () => {
   });
 
   it('should check that user is left on the same page if email is not in the database', () => {
-    expect(ResetPasswordPage.h1.getText()).eq(pagePswRecovery.h1);
+    expect(ResetPasswordPage.header.getText()).eq(pagePswRecovery.h1);
   });
 
   it('should check that user gets redirected to `CheckMail` page with correct email', () => {
@@ -72,7 +72,7 @@ describe('USER PASSWORD RECOVERY', () => {
   });
 
   it('should check if header of the `CheckEmailPage` is correct', () => {
-    expect(CheckEmailPage.h1.getText()).eq(pagePswRecovery.h1Redirect);
+    expect(CheckEmailPage.header.getText()).eq(pagePswRecovery.h1Redirect);
   });
 
   it('should `Try again` link be displayed', () => {

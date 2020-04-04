@@ -2,7 +2,7 @@ import AppPage from '../../_page/AppPage';
 
 class LecturePage extends AppPage {
 
-  get h1() {
+  get header() {
     return browser.$('//h1');
   }
 

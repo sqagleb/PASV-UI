@@ -1,52 +1,43 @@
 class Menu {
+  get profileDropdown() {
+    return $('//a[@class="dropdown-toggle nav-link"]');
+  }
 
-    get profileDropdown() {
-        return $('//a[@class="dropdown-toggle nav-link"]');
-    }
+  get profileBtn() {
+    return $('//button[contains(text(),"Profile")]');
+  }
 
-    get profileBtn() {
-        return $('//button[contains(text(),"Profile")]');
-    }
+  get coursesLink() {
+    return $('[qa="courses-link"]');
+  }
 
-    get coursesLink(){
-        return $('//div[@id="site-menu"]//a[@qa="courses-link"]');
-    }
+  get cardsLink() {
+    return $('[qa="cards-link"]');
+  }
 
-    get cardsLink() {
-        return $('//div[@id="site-menu"]//a[@qa="cards-link"]');
-    }
+  get diaryLink() {
+    return $('[qa="diary-link"]');
+  }
 
-    get diaryLink() {
-        return $('//div[@id="site-menu"]//a[@qa="diary-link"]');
-    }
+  get groupLink() {
+    return $('[qa="groups-link"]');
+  }
 
-    get groupLink () {
-        return $('//div[@id="site-menu"]//a[@qa="groups-link"]');
-    }
+  get challengeLink() {
+    return $('//li[@class="nav-item"]//a[text() ="Challenge"]');
+  }
 
-    get challengeLink () {
-        return $('//li[@class="nav-item"]//a[text() ="Challenge"]');
-    }
+  get siteName() {
+    return $('#site-name');
+  }
 
-    get siteName (){
-        return $('//span[@id="site-name"]');
-    }
+  get navigationBar() {
+    return $('#site-menu');
+  }
 
-    get navigationBar (){
-        return $('//div[@id="site-menu"]');
-    }
-
-    get h1 () {
-        return $('//h1');
-    }
-
-    get p () {
-        return $('//p');
-    }
-
-    get mainBar (){
-        return $('//div[@id="main-bar"]');
-    }
+  get mainBar() {
+    return $('#main-bar');
+  }
 }
 
 export default new Menu();

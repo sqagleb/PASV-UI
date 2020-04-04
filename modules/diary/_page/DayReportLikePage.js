@@ -5,7 +5,7 @@ class DayReportLikePage extends AppPage {
     return browser.$('//a[@qa="diary-link"]');
   }
 
-  get h1() {
+  get header() {
     return browser.$('//h1');
   }
 

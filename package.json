@@ -32,6 +32,7 @@
     "@wdio/spec-reporter": "^5.18.7",
     "@wdio/sync": "^5.18.7",
     "chromedriver": "^80.0.1",
+    "faker": "^4.1.0",
     "prettier": "1.19.1",
     "wdio-chromedriver-service": "^5.0.2",
     "wdio-selenium-standalone-service": "0.0.12"

@@ -19,7 +19,7 @@ describe('GROUPS LECTURES', () => {
   });
 
   it('should verify the header on Groups Page is correct', () => {
-    const actual = GroupsPage.h1.getText();
+    const actual = GroupsPage.header.getText();
     const expected = groupsLectures.groupsHeader;
     expect(actual).eq(expected);
   });
@@ -30,7 +30,7 @@ describe('GROUPS LECTURES', () => {
   });
 
   it('should verify the header on Group Name Page is correct', () => {
-    const actual = LecturePage.h1.getText();
+    const actual = LecturePage.header.getText();
     const expected = lectures.groupNameHeader;
     expect(actual).eq(expected);
   });

@@ -1,4 +1,3 @@
-const hookBefore = require('./hookBefore');
 exports.config = {
   //
   // ====================
@@ -176,7 +175,7 @@ exports.config = {
    * @param {Array.<Object>} capabilities list of capabilities details
    * @param {Array.<String>} specs List of spec file paths that are to be run
    */
-  before: hookBefore,
+ // before: hookBefore,
   // before: function (capabilities, specs) {
   // },
   /**

@@ -18,7 +18,7 @@ describe('WAITING FOR APPROVAL', () => {
   });
 
   it('should have correct header', () => {
-    expect(FlashCardsPage.h1.getText()).eq(pageTestData.title);
+    expect(FlashCardsPage.header.getText()).eq(pageTestData.title);
   });
 
   it('should find group `Test Group` and click', () => {
@@ -27,7 +27,7 @@ describe('WAITING FOR APPROVAL', () => {
   });
 
   it('should check a group title', () => {
-    expect(CardsWaitingForApprovalPage.h1.getText()).eq(waitingForApprovalData.header);
+    expect(CardsWaitingForApprovalPage.header.getText()).eq(waitingForApprovalData.header);
   });
 
   it('should click `Waiting for approval` link', () => {
