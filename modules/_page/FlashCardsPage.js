@@ -53,7 +53,7 @@ class FlashCardsPage extends AppPage {
   }
 
   get firstCreatedCard() {
-    return browser.$('//div[@qa="flash-group-list "]//a');
+    return browser.$('[qa="name"]//a');
   }
 
   get lastCreatedCard() {
@@ -106,9 +106,7 @@ class FlashCardsPage extends AppPage {
   }
 
   get cardLastInList() {
-    return browser.$(
-      '//div[@qa="flash-group-list "]//div[@qa="flash-group-item"][last()]//a',
-    );
+    return browser.$('[qa="flash-group-item"][last()]//a');
   }
 
   get linkToGroup() {

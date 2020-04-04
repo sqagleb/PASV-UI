@@ -1,7 +1,9 @@
+import { expect } from 'chai';
 import FlashCardsPage from '../../_page/FlashCardsPage';
 import LoginPage from '../../user/_page/LoginPage';
 import { student } from '../../user/_data/user.data';
-import Menu from '../../_page/Menu';
+import Main from '../../_page/Menu';
+import MainPage from "../../_page/MainPage";
 
 describe('MENU CARDS PAGE', () => {
   before('login as a student', () => {
@@ -10,7 +12,7 @@ describe('MENU CARDS PAGE', () => {
 
   it('should check a `FlashCards` page title', () => {
     FlashCardsPage.openCardsMenu().click();
-    browser.waitUntil(() => Menu.h1.getText() === 'FlashCards');
+    browser.waitUntil(() => MainPage.header.getText() === 'FlashCards');
   });
 
   it('should check a description', function() {

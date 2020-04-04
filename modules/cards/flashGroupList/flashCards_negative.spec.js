@@ -1,3 +1,4 @@
+import { expect } from 'chai';
 import FlashCardsPage from '../../_page/FlashCardsPage';
 import LoginPage from '../../user/_page/LoginPage';
 import { student } from '../../user/_data/user.data';
