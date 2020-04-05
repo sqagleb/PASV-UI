@@ -1,7 +1,15 @@
 const groupNameLink = 'Test Group Feb 16';
 const pageTitle = 'FlashCards';
-
+const progressBarAttribute = 'aria-valuenow';
 const modalCreateCard = 'Create Flash Card';
+
+const flashGroupContent = {
+  mainView: 'Main view',
+  compactView: 'Compact view',
+  waitingForApproval: 'Waiting for approval',
+  training: 'Training'
+};
+
 const waitingForApprovalData = {
   header:'TestGroup',
   title: 'Waiting for approval',
@@ -39,4 +47,4 @@ const negative4 = {
   answerText: 'Absolutel',
 };
 
-export {groupNameLink, pageTitle, modalCreateCard, waitingForApprovalData, positive, negative1, negative2, negative3, negative4};
+export {groupNameLink, pageTitle, progressBarAttribute, modalCreateCard, waitingForApprovalData, flashGroupContent, positive, negative1, negative2, negative3, negative4};

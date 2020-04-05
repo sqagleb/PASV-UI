@@ -32,26 +32,5 @@ class CardsTrainingPage extends AppPage {
   get cardsList() {
     return browser.$$('//div[@class="pb-1 mb-1 border-bottom"]');
   }
-
-  open(path) {
-    super.open('');
-  }
-
-  getRandomBtnClick() {
-    this.getRandomBtn.click();
-  }
-
-  iKnowBtnClick() {
-    this.iKnowBtn.click();
-  }
-
-  startTrainingClick() {
-    this.startTrainingBtn.click();
-  }
-
-  showAnswerBtnClick() {
-    this.showAnswerBtn.click();
-  }
-}
-
+ }
 export default new CardsTrainingPage();

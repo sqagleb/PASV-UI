@@ -2,10 +2,10 @@ import { expect } from 'chai';
 import LoginPage from '../../user/_page/LoginPage';
 import MainAndCompactViewPage from '../_page/CardsMainAndCompactViewPage';
 import FlashCardsPage from '../../_page/FlashCardsPage';
-import { student } from '../../user/_data/user.data';
-import {pageTitle, waitingForApprovalData} from '../_data/newCard.data';
 import MainPage from "../../_page/MainPage";
 import LogoutPage from "../../user/_page/LogoutPage";
+import { student } from '../../user/_data/user.data';
+import {pageTitle, waitingForApprovalData} from '../_data/newCard.data';
 
 describe('CARDS MAIN VIEW AND COMPACT VIEW', () => {
   before('login as a student', () => {
@@ -17,7 +17,7 @@ describe('CARDS MAIN VIEW AND COMPACT VIEW', () => {
   it('should find `Test Group` group and click', () => {
     FlashCardsPage.linkToGroup.scrollIntoView();
     FlashCardsPage.linkToGroup.click();
-    browser.waitUntil(() => MainPage.header.getText() === waitingForApprovalData.header); //'TestGroup'
+    browser.waitUntil(() => MainPage.header.getText() === waitingForApprovalData.header);
   });
 
   it('should redirect to `Main view`', () => {

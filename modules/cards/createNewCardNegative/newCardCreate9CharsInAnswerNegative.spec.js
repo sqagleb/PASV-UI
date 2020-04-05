@@ -1,9 +1,9 @@
 import { expect } from 'chai';
-import FlashCardsPage from '../../_page/FlashCardsPage';
 import LoginPage from '../../user/_page/LoginPage';
-import { modalCreateCard, negative4 } from '../_data/newCard.data';
-import { student } from '../../user/_data/user.data';
+import FlashCardsPage from '../../_page/FlashCardsPage';
 import LogoutPage from "../../user/_page/LogoutPage";
+import { student } from '../../user/_data/user.data';
+import { modalCreateCard, negative4 } from '../_data/newCard.data';
 
 describe('CREATE NEW CARD -- NEGATIVE WITH 9 CHARS IN ANSWER', () => {
   before('should login as a student', () => {
