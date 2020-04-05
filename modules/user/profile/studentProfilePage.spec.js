@@ -1,78 +1,66 @@
 import { expect } from 'chai';
 
 import LoginPage from '../_page/LoginPage';
-import LogoutPage from '../_page/LogoutPage';
-import Menu from '../../_page/Menu';
 import ProfilePage from '../_page/ProfilePage';
-import Notification from '../../_page/Notification';
-import CreateDayReportPage from '../../diary/_page/CreateDayReportPage';
 
-import { text, partialUrl } from '../_data/profilePage.data';
+import { elementText, keywords } from '../_data/profilePage.data';
 import { student } from '../_data/user.data';
+import MainPage from '../../_page/MainPage';
 
 before(() => {
   LoginPage.login(student);
-  CreateDayReportPage.createNewDayReport();
+  browser.waitUntil(() => MainPage.header.getText() === elementText.studentName);
+});
+
+describe('CHECK MAIN ELEMENTS ARE PRESENT ON PAGE', () => {
+  it('should verify student chart pulse is displayed', () => {
+    expect(ProfilePage.studentChart.isDisplayed()).true;
+  });
+
+  it('should verify social links panel is displayed', () => {
+    expect(ProfilePage.socialLinks.isDisplayed()).true;
+  });
+
+  it('should verify Diary list is displayed', () => {
+    expect(ProfilePage.diaryList.isDisplayed()).true;
+  });
 });
 
 describe('CREATE DAY REPORT FROM PROFILE PAGE FUNCTIONALITY', () => {
   it('should check Create day report button exists and clickable', () => {
-    ProfilePage.goToProfilePage();
     browser.waitUntil(() => ProfilePage.createDayReportBtn.isDisplayed());
     expect(ProfilePage.createDayReportBtn.isClickable()).true;
   });
 
-  it('should user be redirected to Create Day Report page', () => {
+  it('should check user was redirected to Create Day Report page', () => {
     ProfilePage.createDayReportBtn.click();
-    browser.waitUntil(() => Menu.h1.isDisplayed());
-    expect(Menu.h1.getText()).equal(text.createDayReportH1);
-  });
-});
-
-describe('DAY REPORT MARK AS LIKED FUNCTIONALITY', () => {
-  it('should check profile page is loaded and correct', () => {
-    ProfilePage.goToProfilePage();
-    browser.waitUntil(() => Menu.h1.isDisplayed());
-    expect(Menu.h1.getText()).equal(text.studentName);
-  });
-
-  it('should click Like button', () => {
-    ProfilePage.likeBtn.click();
-    Notification.success.waitForDisplayed(1500, 'Notification wasn\'t displayed');
+    browser.waitUntil(() => MainPage.header.getText() === elementText.createDayReportH1);
   });
 });
 
 describe('SOCIAL NETWORKS INTEGRATION WITH USER PROFILE', () => {
   it('should verify that page is correct', () => {
-    ProfilePage.goToProfilePage();
-    browser.waitUntil(() => Menu.h1.getText() === text.studentName);
+    ProfilePage.open();
+    browser.waitUntil(() => MainPage.header.getText() === elementText.studentName);
   });
 
-  it('should verify Codewars integration', () => {
-    ProfilePage.codeWarsIcon.click();
-    browser.switchWindow(partialUrl.codewars);
-    expect(browser.getUrl()).includes(partialUrl.codewars);
-    browser.closeWindow();
-    browser.switchWindow(partialUrl.pasv);
+  it('should verify Facebook icon contains correct link and opens new window on click', () => {
+    expect(ProfilePage.checkElemLink(ProfilePage.facebookIcon, keywords.facebook)).true;
   });
 
-  it('should verify Facebook integration', () => {
-    ProfilePage.facebookIcon.click();
-    browser.switchWindow(partialUrl.facebook);
-    expect(browser.getUrl()).includes(partialUrl.facebook);
-    browser.closeWindow();
-    browser.switchWindow(partialUrl.pasv);
+  it('should verify Codewars icon contains correct link and opens new window on click', () => {
+    expect(ProfilePage.checkElemLink(ProfilePage.codewarsIcon, keywords.codewars)).true;
   });
 
-  it('should verify LinkedIn integration', () => {
-    ProfilePage.linkedInIcon.click();
-    browser.switchWindow(partialUrl.linkedin);
-    expect(browser.getUrl()).includes(partialUrl.linkedin);
-    browser.closeWindow();
-    browser.switchWindow(partialUrl.pasv);
+  it('should verify LinkedIn icon contains correct link and opens new window on click', () => {
+    expect(ProfilePage.checkElemLink(ProfilePage.linkedinIcon, keywords.linkedin)).true;
+  });
+
+  it('should verify Github icon contains correct link and opens new window on click', () => {
+    expect(ProfilePage.checkElemLink(ProfilePage.githubIcon, keywords.github)).true;
   });
 });
 
 after('should logout', () => {
-  LogoutPage.logout();
+  LoginPage.logout();
 });

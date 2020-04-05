@@ -18,7 +18,7 @@ describe('SAVE COINS AMOUNT BEFORE ', () => {
   });
 
   it('should save current amount of user coins from the Profile page', () => {
-    ProfilePage.goToProfilePage();
+    ProfilePage.open();
     browser.refresh();
     beforeCoinAmount = ProfilePage.coinTotal.getText();
     topCoinAmount = ProfilePage.coinTotalTopRight.getText();
@@ -48,7 +48,7 @@ describe('APPROVE DAY REPORT BY ADMIN', () => {
 describe('VERIFY TOTAL COINS AMOUNT AFTER ADMIN APPROVED REPORT', () => {
   before(() => {
     LoginPage.login(student);
-    ProfilePage.goToProfilePage();
+    ProfilePage.open();
   });
 
   it('should verify new coin amount not equal coin amount before', () => {
