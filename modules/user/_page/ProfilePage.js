@@ -5,15 +5,23 @@ class ProfilePage extends AppPage {
     return $('[qa="create-day-report-button"]');
   }
 
-  get likeBtn() {
-    return $("//button[@class='btn btn-outline-primary btn-sm']");
+  get studentChart() {
+    return $('.recharts-surface');
+  }
+
+  get socialLinks() {
+    return $('[qa="social-links"]');
+  }
+
+  get diaryList() {
+    return $('[qa="diary-list"]');
   }
 
   get updateListBtn() {
     return $("//button[@class='btn btn-secondary']");
   }
 
-  get codeWarsIcon() {
+  get codewarsIcon() {
     return $('[qa="codewars"]');
   }
 
@@ -21,8 +29,12 @@ class ProfilePage extends AppPage {
     return $('[qa="facebook"]');
   }
 
-  get linkedInIcon() {
+  get linkedinIcon() {
     return $('[qa="linkedIn"]');
+  }
+
+  get githubIcon() {
+    return $('[qa="github"]');
   }
 
   get coinTotal() {
@@ -33,7 +45,11 @@ class ProfilePage extends AppPage {
     return $('//div[@class="justify-content-end collapse navbar-collapse"]//span');
   }
 
-  goToProfilePage() {
+  checkElemLink(link, keyword) {
+    return link.getAttribute('href').includes(keyword) && link.getAttribute('target') === '_blank';
+  }
+
+  open() {
     $('//a[@class="dropdown-toggle nav-link"]').click();
     $('//button[contains(text(), "Profile")]').click();
   }
