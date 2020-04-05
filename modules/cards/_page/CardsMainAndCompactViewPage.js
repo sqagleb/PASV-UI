@@ -17,6 +17,10 @@ class CardsMainAndCompactViewPage extends AppPage {
     return browser.$('//a[contains(text(),"Compact view")][contains(@class,"nav-link active")]');
   }
 
+  get compactViewFirstElement() {
+    return browser.$('//div[@class="pb-1 mb-1 border-bottom"]');
+  }
+
   get questionText() {
     return browser.$(
       '//strong[contains(text(),"What is the difference between the first test and the second one?")]',

@@ -1,24 +1,25 @@
-import FlashCardsPage from '../../_page/FlashCardsPage';
+import { expect } from 'chai';
 import LoginPage from '../../user/_page/LoginPage';
-import { student } from '../../user/_data/user.data';
 import Menu from '../../_page/Menu';
+import MainPage from "../../_page/MainPage";
+import FlashCardsPage from '../../_page/FlashCardsPage';
+import LogoutPage from "../../user/_page/LogoutPage";
+import { student } from '../../user/_data/user.data';
+import { pageTitle } from '../_data/newCard.data';
 
 describe('MENU CARDS PAGE', () => {
-  before('login as a student', () => {
+  before('login as a student and open `FlashCards` page', () => {
     LoginPage.login(student);
+    Menu.cardsLink.click();
+    browser.waitUntil(() => MainPage.header.getText() === pageTitle);
   });
 
-  it('should check a `FlashCards` page title', () => {
-    FlashCardsPage.openCardsMenu().click();
-    browser.waitUntil(() => Menu.h1.getText() === 'FlashCards');
-  });
-
-  it('should check a description', function() {
-    const actual = FlashCardsPage.pageDescription.getText();
-    const expected =
-      'Now the stage of filling content cards. Create cards. After there will be enough cards training will be opened for memorization.';
-    expect(actual).eq(expected);
-  });
+  // it('should check a description', function() {
+  //   const actual = FlashCardsPage.pageDescription.getText();
+  //   const expected =
+  //     'Now the stage of filling content cards. Create cards. After there will be enough cards training will be opened for memorization.';
+  //   expect(actual).eq(expected);
+  // });
 
   //Эти тесты через раз падают, так как постоянно создаются новые и сравнение сделать сложнее по имени.
   // it('should check the name of the first(top) card', function () {
@@ -37,7 +38,7 @@ describe('MENU CARDS PAGE', () => {
   it('should check title of the oldest created card', function() {
     const actual = FlashCardsPage.cardLastInList.getText();
     const expected = 'TestGroup';
-    expect(actual).eq(expected);
+    expect(FlashCardsPage.cardLastInList.getText()).eq(expected);
   });
 
   it('should check `Main view` title in the navigation menu link', function() {
@@ -78,5 +79,9 @@ describe('MENU CARDS PAGE', () => {
   it('should check `Training` link is clickable', function() {
     const actual = FlashCardsPage.trainingLink.isClickable();
     expect(actual).be.true;
+  });
+
+  after('logout', () => {
+    LogoutPage.logout();
   });
 });

@@ -1,25 +1,21 @@
 import AppPage from './AppPage';
-import { groupNameLink } from '../_data/newCard.data';
+import { groupNameLink } from '../cards/_data/newCard.data';
 
 class FlashCardsPage extends AppPage {
   open() {
     super.open('https://stage.pasv.us/flash');
   }
 
-  get header() {
-    return browser.$('//h1');
-  }
-
-  get pageDescription() {
+ get pageDescription() {
     return browser.$('//div//p[@qa="flash-description"]');
   }
 
-  openCardsMenu() {
+  get openCardsMenu() {
     return browser.$('//li//a[contains(text(),"Cards")]');
   }
 
   get groupName() {
-    return browser.$(groupNameLink);
+    return browser.$('//a[text()="Test Group Feb 16"]');
   }
 
   get createNewCardBtn() {
@@ -48,18 +44,28 @@ class FlashCardsPage extends AppPage {
     return browser.$('//button[text() = "Create"]');
   }
 
+  get modalFormCloseOut() {
+    return browser.$('//button[@class = "close"]');
+  }
+
   get titleOfCurrentGroup() {
     return browser.$('//h1');
   }
 
   get firstCreatedCard() {
-    return browser.$('//div[@qa="flash-group-list "]//a');
+    return browser.$('//div[@qa="flash-group-item"]//a');
   }
 
   get lastCreatedCard() {
-    return browser.$(
-      '//div[@class = "pb-4 mb-4 border-bottom"]//strong[@class = "d-block mb-2"]',
-    );
+    return browser.$('//div[@class="pb-4 mb-4 border-bottom"]//strong[@class="d-block mb-2"]');
+  }
+
+  get lastCreatedCardCreator() {
+    return browser.$('//div[@class = "row"]//small[@class]');
+  }
+
+  get lastCreatedCardStatus() {
+    return browser.$('//div[@class = "row"]//span[contains(@class,"badge")]');
   }
 
   get profileDropdown() {
@@ -68,12 +74,6 @@ class FlashCardsPage extends AppPage {
 
   get logoutLink() {
     return browser.$('// button[contains(text(), "Logout")]');
-  }
-
-  logout() {
-    this.profileDropdown.click();
-    this.logoutLink.click();
-    browser.pause(1000);
   }
 
   //testing one of the cards
@@ -106,14 +106,12 @@ class FlashCardsPage extends AppPage {
   }
 
   get cardLastInList() {
-    return browser.$(
-      '//div[@qa="flash-group-list "]//div[@qa="flash-group-item"][last()]//a',
-    );
+    return browser.$('//div[@qa="flash-group-item"][last()]//a');
   }
 
   get linkToGroup() {
     // return browser.$('=TestGroup');  - looks cool, but we decided to use other standard in the whole project
-    return browser.$('//h4[@qa="name"]//a[text()="TestGroup"]');
+    return browser.$('//h4[@qa="name"]//a[text()="TestGroup"]');  //"Test Group Feb 16"]');
   }
 }
 

@@ -3,23 +3,21 @@ import LoginPage from '../../user/_page/LoginPage';
 import MainAndCompactViewPage from '../_page/CardsMainAndCompactViewPage';
 import FlashCardsPage from '../../_page/FlashCardsPage';
 import { student } from '../../user/_data/user.data';
-import { pageTestData } from '../_data/cardsMainAndCompact.data';
-import { groupNameLink } from '../../_data/newCard.data';
+import {pageTitle, waitingForApprovalData} from '../_data/newCard.data';
+import MainPage from "../../_page/MainPage";
+import LogoutPage from "../../user/_page/LogoutPage";
 
 describe('CARDS MAIN VIEW AND COMPACT VIEW', () => {
   before('login as a student', () => {
     LoginPage.login(student);
-    browser.pause(200);
-  });
-
-  it('should open `FlashCards` page', () => {
     FlashCardsPage.open();
-    expect(pageTestData.title).equal(FlashCardsPage.header.getText());
+    browser.waitUntil( () => MainPage.header.getText() === pageTitle);
   });
 
-  it('should open a specified `Flash Card`', () => {
-    browser.$(groupNameLink).click();
-    expect(pageTestData.groupName).equal(FlashCardsPage.header.getText());
+  it('should find `Test Group` group and click', () => {
+    FlashCardsPage.linkToGroup.scrollIntoView();
+    FlashCardsPage.linkToGroup.click();
+    browser.waitUntil(() => MainPage.header.getText() === waitingForApprovalData.header); //'TestGroup'
   });
 
   it('should redirect to `Main view`', () => {
@@ -47,5 +45,9 @@ describe('CARDS MAIN VIEW AND COMPACT VIEW', () => {
   it('should check that answer appears when hovering over the question', () => {
     MainAndCompactViewPage.questionText.moveTo();
     expect(MainAndCompactViewPage.answerText.isExisting()).equals(true);
+  });
+
+  after('logout', () => {
+    LogoutPage.logout();
   });
 });

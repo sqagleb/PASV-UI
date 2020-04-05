@@ -2,8 +2,13 @@ import { expect } from 'chai';
 import Menu from '../../_page/Menu';
 import FlashCardsPage from '../../_page/FlashCardsPage';
 import LoginPage from '../../user/_page/LoginPage';
-import { student } from '../../user/_data/user.data';
 import CardsTrainingPage from '../_page/CardsTrainingPage';
+import MainPage from "../../_page/MainPage";
+import LogoutPage from "../../user/_page/LogoutPage";
+import { student } from '../../user/_data/user.data';
+import {pageTitle, waitingForApprovalData} from "../_data/newCard.data";
+import CardsMainAndCompactViewPage from "../_page/CardsMainAndCompactViewPage";
+
 
 let nrOfCards;
 
@@ -11,32 +16,32 @@ describe('CARDS TRAINING', () => {
   before('login as student and open Cards page from Home page', () => {
     LoginPage.login(student);
     Menu.cardsLink.click();
-    browser.waitUntil(() => FlashCardsPage.header.getText() === 'FlashCards', 2000);
+    browser.waitUntil(() => MainPage.header.getText() === pageTitle);
   });
 
   it('should find `Test Group` group and click', () => {
     FlashCardsPage.linkToGroup.scrollIntoView();
     FlashCardsPage.linkToGroup.click();
-    browser.waitUntil(() => CardsTrainingPage.groupTitle.getText() === 'TestGroup', 100);
+    browser.waitUntil(() => CardsTrainingPage.groupTitle.getText() === waitingForApprovalData.header);
   });
 
   it('should check number of cards in a group from CompactView page', () => {
     FlashCardsPage.compactViewLink.waitForDisplayed();
     FlashCardsPage.compactViewLink.click();
-    $('//div[@class="pb-1 mb-1 border-bottom"]').waitForDisplayed();
+    CardsMainAndCompactViewPage.compactViewFirstElement.waitForDisplayed();
     nrOfCards = CardsTrainingPage.cardsList.length;
   });
 
   it('should click `Training` link', () => {
     FlashCardsPage.trainingLink.waitForDisplayed();
     FlashCardsPage.trainingLink.click();
-    browser.pause(300);
+    browser.pause(3000);
   });
 
   it('should click `I Know` until StartTraining button is displayed and click on it', () => {
     while (!CardsTrainingPage.startTrainingBtn.isDisplayed()) {
         CardsTrainingPage.iKnowBtnClick();
-        browser.pause(500);
+        browser.pause(3000);
       }
       CardsTrainingPage.startTrainingClick();
   });
@@ -69,11 +74,15 @@ describe('CARDS TRAINING', () => {
         Math.floor((100 / nrOfCards) * i).toString(),
       );
       CardsTrainingPage.iKnowBtnClick();
-      browser.pause(500);
+      browser.pause(3000);
     }
   });
 
   it('should check if `Start training` button is enabled', () => {
     CardsTrainingPage.startTrainingBtn.waitForEnabled();
+  });
+
+  after('logout', () => {
+    LogoutPage.logout();
   });
 });
