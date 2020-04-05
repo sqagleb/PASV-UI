@@ -1,11 +1,13 @@
 import { expect } from 'chai';
 
 import LoginPage from '../_page/LoginPage';
+import LogoutPage from "../_page/LogoutPage";
 import ProfilePage from '../_page/ProfilePage';
+import MainPage from '../../_page/MainPage';
 
 import { elementText, keywords } from '../_data/profilePage.data';
 import { student } from '../_data/user.data';
-import MainPage from '../../_page/MainPage';
+
 
 before(() => {
   LoginPage.login(student);
@@ -62,5 +64,5 @@ describe('SOCIAL NETWORKS INTEGRATION WITH USER PROFILE', () => {
 });
 
 after('should logout', () => {
-  LoginPage.logout();
+  LogoutPage.logout();
 });
