@@ -4,9 +4,8 @@ import LoginPage from '../_page/LoginPage';
 import Notification from '../../_page/Notification';
 import ResetPasswordPage from '../_page/ResetPasswordPage';
 import CheckEmailPage from '../../_page/CheckEmailPage';
-import { testEmails, pagePswRecovery } from '../_data/recoveryPassword.data';
 import Menu from '../../_page/Menu';
-
+import { testEmails, pagePswRecovery } from '../_data/recoveryPassword.data';
 describe('USER PASSWORD RECOVERY', () => {
   before('open Login page from Homepage', () => {
     HomePage.open();

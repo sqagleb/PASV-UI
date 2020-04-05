@@ -37,9 +37,9 @@ describe('LOGIN PAGE --POSITIVE', () => {
 
     it('should check transfer to Profile Page', () => {
         browser.waitUntil(() => {
-            return Menu.h1.getText() === 'Student PASV'
-        }, 5000, 'expected header to be different after 3s');
-    });
+        return Menu.h1.getText() === 'Student PASV'
+    }, 5000, 'expected header to be different after 3s');
+});
 
     it('should get positive login notification', () => {
         $(Notification.success).isDisplayed();
