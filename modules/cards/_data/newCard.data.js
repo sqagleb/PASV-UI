@@ -1,5 +1,14 @@
-const groupNameLink = '=Test Group Feb 16';
+const groupNameLink = 'Test Group Feb 16';
 const pageTitle = 'FlashCards';
+
+const modalCreateCard = 'Create Flash Card';
+const waitingForApprovalData = {
+  header:'TestGroup',
+  title: 'Waiting for approval',
+  moduleTitle: 'Create Flash Card',
+  cardStatus: 'new'
+};
+
 const positive = {
   groupName: 'Test Group Feb 16',
   questionText: 'What is the difference between the first test and the second one?',
@@ -30,4 +39,4 @@ const negative4 = {
   answerText: 'Absolutel',
 };
 
-export {groupNameLink, pageTitle, positive, negative1, negative2, negative3, negative4};
+export {groupNameLink, pageTitle, modalCreateCard, waitingForApprovalData, positive, negative1, negative2, negative3, negative4};
