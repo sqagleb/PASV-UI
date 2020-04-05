@@ -81,13 +81,11 @@ class CreateDayReportPage extends AppPage {
   }
 
   selectDropdown() {
-
-   // this.moraleLevel.selectByVisibleText('10 – I am pleased with everything!');
-    for (let i = 0; i <= this.moraleList.length; i++){
-    //for (let i = 9; i > 0; i--) {
+    this.moraleLevel.selectByVisibleText('10 – I am pleased with everything!');
+    for (let i = 9; i > 0; i--) {
       this.moraleLevel.selectByVisibleText(`${i}`);
     }
-   // this.moraleLevel.selectByVisibleText('0 – I give up');
+    this.moraleLevel.selectByVisibleText('0 – I give up');
   }
 
   hoursEmptyFieldScenario() {
