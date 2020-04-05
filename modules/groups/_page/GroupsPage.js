@@ -2,6 +2,7 @@ import AppPage from '../../_page/AppPage';
 import LoginPage from '../../user/_page/LoginPage';
 import Menu from '../../_page/Menu';
 import LogoutPage from '../../user/_page/LogoutPage';
+import MainPage from "../../_page/MainPage";
 
 class GroupsPage extends AppPage {
 
@@ -29,6 +30,10 @@ class GroupsPage extends AppPage {
     return $('//a[contains(text(),"GROUP FOR TEST")]');
   }
 
+  // get recentlyCreatedGroup() {
+  //   return $('//a[contains(text(),"GROUP FOR TEST")]');
+  // }
+
   get quizTabBtn() {
     return $('//a[contains(text(),"Quiz")]');
   }
@@ -55,12 +60,13 @@ class GroupsPage extends AppPage {
 
   createNewGroup(role) {
     LoginPage.login(role);
-    super.click(Menu.groupLink);
-    super.click(this.createGroupBtn);
+    MainPage.smartClick(Menu.groupLink);
+    MainPage.smartClick(this.createGroupBtn);
+
     this.groupNameInput.setValue('GROUP FOR TEST');
     this.groupDescriptionInput.setValue('test '.repeat(5));
     this.accessTypeDropbox.selectByVisibleText('All');
-    super.click(this.createBtn);
+    MainPage.smartClick(this.createBtn);
     LogoutPage.logout();
   }
 }

@@ -1,3 +1,4 @@
+import { expect } from 'chai';
 import AppPage from './AppPage';
 
 class MainPage extends AppPage {
