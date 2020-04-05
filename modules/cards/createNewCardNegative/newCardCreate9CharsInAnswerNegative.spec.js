@@ -27,7 +27,7 @@ describe('CREATE NEW CARD -- NEGATIVE WITH 9 CHARS IN ANSWER', () => {
     expect(FlashCardsPage.modalFormTitle.getText()).equal(modalCreateCard);
   });
 
-  it('should fill in text areas and chrck create button', () => {
+  it('should fill in text areas and check create button', () => {
     FlashCardsPage.question.setValue(negative4.questionText);
     FlashCardsPage.answer.setValue(negative4.answerText);
     expect(FlashCardsPage.createBtn.isEnabled()).be.false;
