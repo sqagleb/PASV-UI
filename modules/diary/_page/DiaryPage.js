@@ -11,7 +11,7 @@ class DiaryPage extends AppPage {
   }
 
   get approveBtn() {
-    return $('//button[@qa="approve-button"]');
+    return $('[qa="approve-button"]');
   }
 }
 
