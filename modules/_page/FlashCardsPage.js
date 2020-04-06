@@ -7,11 +7,11 @@ class FlashCardsPage extends AppPage {
   }
 
  get pageDescription() {
-    return browser.$('//div//p[@qa="flash-description"]');
+    return browser.$('p[qa="flash-description"]');
   }
 
   get openCardsMenu() {
-    return browser.$('//li//a[contains(text(),"Cards")]');
+    return browser.$('a[qa="cards-link"]');
   }
 
   get groupName() {
@@ -28,28 +28,28 @@ class FlashCardsPage extends AppPage {
 
   get modalFormTitle() {
     return browser.$(
-      '//div[contains(@class, "sidepanel")]//*[@class="modal-title"]',
+      '//h5[@class="modal-title"]',
     );
   }
 
   get question() {
-    return browser.$('//textarea[@name = "question"]');
+    return browser.$('.modal-body textarea[name="question"]');
   }
 
   get answer() {
-    return browser.$('//textarea[@name = "answer"]');
+    return browser.$('.modal-body textarea[name="answer"]');
   }
 
   get createBtn() {
-    return browser.$('//button[text() = "Create"]');
+    return browser.$('.modal-body button[type= "submit"]');
   }
 
   get modalFormCloseOut() {
-    return browser.$('//button[@class = "close"]');
+    return browser.$('.modal-body button.close');
   }
 
   get titleOfCurrentGroup() {
-    return browser.$('//h1');
+    return browser.$('h1');
   }
 
   get firstCreatedCard() {
@@ -73,12 +73,12 @@ class FlashCardsPage extends AppPage {
   }
 
   get logoutLink() {
-    return browser.$('// button[contains(text(), "Logout")]');
+    return browser.$('.dropdown-menu button[qa="logout-button"]');
   }
 
   //testing one of the cards
   get h1LastCreated() {
-    return browser.$('//h1');
+    return browser.$('h1');
   }
 
   get mainViewLink() {
