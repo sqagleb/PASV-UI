@@ -54,7 +54,7 @@ describe('USER PASSWORD RECOVERY', () => {
   it('should check failed message `User not found` appears if entered email is not found in the database', () => {
     ResetPasswordPage.emailInput.setValue(testEmails.notRegistered);
     ResetPasswordPage.submitBtn.click();
-    browser.waitUntil(() => Notification.title.getText() === pagePswRecovery.failedMsgTxt, 2000);
+    MainPage.verifyElementText(Notification.title, pagePswRecovery.failedMsgTxt);
   });
 
   it('should check that user is left on the same page if email is not in the database', () => {
