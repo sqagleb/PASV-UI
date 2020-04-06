@@ -5,16 +5,17 @@ import { student } from '../../user/_data/user.data';
 import {dailyReportList} from "../_data/dailyReportsList.data";
 import LoginPage from "../../user/_page/LoginPage";
 import {like} from "../_data/dayReportLike.data";
+import DiaryPage from "../_page/DiaryPage";
 
 
 describe('DAY REPORT PAGE LIKE BUTTON TESTING', () => {
   before(() => {
     LoginPage.login(student);
-    DayReportLikePage.open();
+    DiaryPage.open();
   });
 
-  it('should have a correct page title', () => {
-    expect(DayReportLikePage.h1.getText()).eq(dailyReportList.h1);
+  it('should have a correct page header', () => {
+    expect(DayReportLikePage.header.getText()).eq(dailyReportList.h1);
   });
 
 
