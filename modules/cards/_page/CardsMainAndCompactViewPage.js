@@ -2,23 +2,23 @@ import AppPage from '../../_page/AppPage';
 
 class CardsMainAndCompactViewPage extends AppPage {
   get mainView() {
-    return browser.$('//a[contains(text(),"Main view")]');
+    return browser.$('[class="nav-link"][qa=main-view]');
   }
 
   get mainViewActive() {
-    return browser.$('//a[contains(text(),"Main view")][contains(@class,"nav-link active")]');
+    return browser.$('[class="nav-link active"][qa=main-view]');
   }
 
   get compactView() {
-    return browser.$('//a[contains(text(),"Compact view")]');
+    return browser.$('[class="nav-link"][qa="compact-view"]');
   }
 
   get compactViewActive() {
-    return browser.$('//a[contains(text(),"Compact view")][contains(@class,"nav-link active")]');
+    return browser.$('[class="nav-link active"][qa="compact-view"]');
   }
 
   get compactViewFirstElement() {
-    return browser.$('//div[@class="pb-1 mb-1 border-bottom"]');
+    return browser.$('[class="pb-1 mb-1 border-bottom"]');
   }
 
   get questionText() {
@@ -36,7 +36,7 @@ class CardsMainAndCompactViewPage extends AppPage {
   }
 
   get cardAnswer() {
-    return browser.$('//span[@qa="answer"]');
+    return browser.$('span[qa="answer"]');
   }
 }
 export default new CardsMainAndCompactViewPage();

@@ -2,23 +2,23 @@ import AppPage from '../../_page/AppPage';
 
 class CardsTrainingPage extends AppPage {
   get groupTitle() {
-    return browser.$('//h1');
+    return browser.$('h1');
   }
 
   get startTrainingBtn() {
-    return browser.$('//button[contains(text(),"Start training")]');
+    return browser.$('button[class="btn btn-secondary btn-sm"]');
   }
 
   get showAnswerBtn() {
-    return browser.$('//div//button[contains(text(),"Show")]');
+    return browser.$('button[qa="answer-button"]');
   }
 
   get iKnowBtn() {
-    return browser.$('//button[contains(text(),"I know")]');
+    return browser.$('button[qa="know-button"]');
   }
 
   get getRandomBtn() {
-    return browser.$('//button[contains(text(),"Get random next")]');
+    return browser.$('button[qa="random-button"]');
   }
 
   get answerTxt() {
