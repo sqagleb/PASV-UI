@@ -12,7 +12,6 @@ describe('USER PASSWORD RECOVERY', () => {
   before('open Login page', () => {
     LoginPage.open();
     MainPage.verifyElementText(MainPage.header, H1LoginPage);
-   browser.waitUntil(() => MainPage.header.getText() === H1LoginPage, 1000);
   });
 
   it('should check if Forgot password link is displayed', () => {
