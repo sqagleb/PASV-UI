@@ -3,7 +3,7 @@ import LoginPage from '../_page/LoginPage';
 import {student} from  '../_data/user.data';
 import Notification from '../../_page/Notification';
 import MainPage from "../../_page/MainPage";
-import {H1LoginPage} from "../_data/userRegistration.data";
+import {H1LoginPage} from "../_data/login.data";
 
 describe('LOGIN PAGE --POSITIVE', () => {
     before(() => {
@@ -15,11 +15,8 @@ describe('LOGIN PAGE --POSITIVE', () => {
         expect(LoginPage.submitBtn.isEnabled()).false;
     });
 
-    it('should login user us student', () => {
+    it('should login user us student and get successful notification', () => {
         LoginPage.login(student);
-    });
-
-    it('should get successful notification about user login in the system', () => {
         Notification.successMsgDisplayed();
     });
 });
