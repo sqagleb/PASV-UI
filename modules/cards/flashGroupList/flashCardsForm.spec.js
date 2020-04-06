@@ -11,7 +11,8 @@ describe('MENU CARDS PAGE', () => {
   before('login as a student and open `FlashCards` page', () => {
     LoginPage.login(student);
     Menu.cardsLink.click();
-    browser.waitUntil(() => MainPage.header.getText() === pageTitle);
+    MainPage.verifyElementText(MainPage.header, pageTitle);
+    //browser.waitUntil(() => MainPage.header.getText() === pageTitle);
   });
 
   it('should check title of the oldest created card', () => {
@@ -20,7 +21,8 @@ describe('MENU CARDS PAGE', () => {
 
   it('should check `Main view` title in the navigation menu link', () => {
     FlashCardsPage.firstCreatedCard.click();
-    browser.waitUntil(()=>FlashCardsPage.mainViewLink.getText() === flashGroupContent.mainView);
+    MainPage.verifyElementText(MainPage.header, flashGroupContent.mainView);
+    //browser.waitUntil(()=>FlashCardsPage.mainViewLink.getText() === flashGroupContent.mainView);
   });
 
   it('should check `Compact view` title in the navigation menu', () => {

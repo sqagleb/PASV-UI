@@ -11,13 +11,15 @@ describe('CARDS MAIN VIEW AND COMPACT VIEW', () => {
   before('login as a student', () => {
     LoginPage.login(student);
     FlashCardsPage.open();
-    browser.waitUntil( () => MainPage.header.getText() === pageTitle);
+    MainPage.verifyElementText(MainPage.header, pageTitle);
+    //browser.waitUntil( () => MainPage.header.getText() === pageTitle);
   });
 
   it('should find `Test Group` group and click', () => {
     FlashCardsPage.linkToGroup.scrollIntoView();
     FlashCardsPage.linkToGroup.click();
-    browser.waitUntil(() => MainPage.header.getText() === waitingForApprovalData.header);
+    MainPage.verifyElementText(MainPage.header, waitingForApprovalData.header);
+    //browser.waitUntil(() => MainPage.header.getText() === waitingForApprovalData.header);
   });
 
   it('should redirect to `Main view`', () => {

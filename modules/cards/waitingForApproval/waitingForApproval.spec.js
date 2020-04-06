@@ -11,7 +11,8 @@ describe('WAITING FOR APPROVAL', () => {
   before('login as a student and click `Cards` link', () => {
     LoginPage.login(student);
     Menu.cardsLink.click();
-    browser.waitUntil( () => MainPage.header.getText()=== pageTitle);
+    MainPage.verifyElementText(MainPage.header, pageTitle);
+    //browser.waitUntil( () => MainPage.header.getText()=== pageTitle);
   });
 
   it('should find group `Test Group` and check header', () => {
@@ -27,7 +28,8 @@ describe('WAITING FOR APPROVAL', () => {
 
   it('should click CreateNewCard Button', () => {
     FlashCardsPage.createNewCardBtn.click();
-    browser.waitUntil(() => FlashCardsPage.modalFormTitle.getText() === waitingForApprovalData.moduleTitle);
+    MainPage.verifyElementText(FlashCardsPage.modalFormTitle, waitingForApprovalData.moduleTitle);
+    //browser.waitUntil(() => FlashCardsPage.modalFormTitle.getText() === waitingForApprovalData.moduleTitle);
   });
 
   it('should create flash card', () => {
@@ -35,7 +37,8 @@ describe('WAITING FOR APPROVAL', () => {
     FlashCardsPage.answer.setValue(positive.answerText);
     expect(FlashCardsPage.createBtn.isEnabled()).be.true;
     FlashCardsPage.createBtn.click();
-    browser.waitUntil( () => FlashCardsPage.lastCreatedCard.getText() === positive.questionText );
+    MainPage.verifyElementText(FlashCardsPage.lastCreatedCard, positive.questionText);
+    //browser.waitUntil( () => FlashCardsPage.lastCreatedCard.getText() === positive.questionText );
   });
 
   it('should check if the card has right creator name', () => {

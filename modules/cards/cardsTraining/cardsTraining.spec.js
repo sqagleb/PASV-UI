@@ -15,13 +15,15 @@ describe('CARDS TRAINING', () => {
   before('login as student and open Cards page from Home page', () => {
     LoginPage.login(student);
     Menu.cardsLink.click();
-    browser.waitUntil(() => MainPage.header.getText() === pageTitle);
+    MainPage.verifyElementText(MainPage.header, pageTitle);
+    //browser.waitUntil(() => MainPage.header.getText() === pageTitle);
   });
 
   it('should find `Test Group` group and click', () => {
     FlashCardsPage.linkToGroup.scrollIntoView();
     FlashCardsPage.linkToGroup.click();
-    browser.waitUntil(() => CardsTrainingPage.groupTitle.getText() === waitingForApprovalData.header);
+    MainPage.verifyElementText(MainPage.header,waitingForApprovalData.header);
+    //browser.waitUntil(() => CardsTrainingPage.groupTitle.getText() === waitingForApprovalData.header);
   });
 
   it('should check number of cards in a group from CompactView page', () => {

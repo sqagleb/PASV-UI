@@ -10,12 +10,14 @@ describe('CREATE NEW CARD -- POSITIVE', () => {
   before('should login and open `FlashCards` page', () => {
     LoginPage.login(student);
     FlashCardsPage.open();
-    browser.waitUntil( () => MainPage.header.getText() === pageTitle);
+    MainPage.verifyElementText(MainPage.header, pageTitle);
+    //browser.waitUntil( () => MainPage.header.getText() === pageTitle);
   });
 
   it('should open  and check that it is a correct group', () => {
     FlashCardsPage.groupName.click();
-    browser.waitUntil( () => FlashCardsPage.titleOfCurrentGroup.getText() === positive.groupName);
+    MainPage.verifyElementText(MainPage.header, positive.groupName);
+    //browser.waitUntil( () => FlashCardsPage.titleOfCurrentGroup.getText() === positive.groupName);
   });
 
   it('should click `Waiting for approval` link', () => {
