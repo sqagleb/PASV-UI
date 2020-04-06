@@ -21,7 +21,7 @@ describe('MENU CARDS PAGE', () => {
 
   it('should check `Main view` title in the navigation menu link', () => {
     FlashCardsPage.firstCreatedCard.click();
-    MainPage.verifyElementText(MainPage.header, flashGroupContent.mainView);
+    MainPage.verifyElementText(FlashCardsPage.mainViewLink, flashGroupContent.mainView);
     //browser.waitUntil(()=>FlashCardsPage.mainViewLink.getText() === flashGroupContent.mainView);
   });
 
