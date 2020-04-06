@@ -1,6 +1,7 @@
 import AppPage from '../../_page/AppPage';
 
 class GroupRating extends AppPage {
+
   get ratingLink() {
     return $('//a[contains(text(),"Rating")]');
   }

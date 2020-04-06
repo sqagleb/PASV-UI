@@ -1,9 +1,6 @@
 import AppPage from '../../_page/AppPage';
 
 class GroupDescriptionPage extends AppPage {
-  get recentlyCreatedGroup() {
-    return $('//a[contains(text(),"GROUP FOR TEST")]');
-  }
 
   get descriptionTabBtn() {
     return $('//a[contains(text(),"Description")]');
@@ -11,6 +8,9 @@ class GroupDescriptionPage extends AppPage {
 
   get navigationBar() {
     return $('//ul[@class="mb-4 tabs nav"]');
+  }
+  get groupTitle() {
+    return $('[qa="group-title"]');
   }
 }
 
