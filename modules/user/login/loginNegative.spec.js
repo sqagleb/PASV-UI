@@ -1,11 +1,10 @@
 import {expect}  from 'chai';
 import LoginPage from '../_page/LoginPage';
-import {student} from  '../_data/user.data';
+import {H1LoginPage, studentWithWrongEmail, studentWithWrongPassword} from  '../_data/login.data';
 import Notification from '../../_page/Notification';
 import MainPage from "../../_page/MainPage";
-import {H1LoginPage} from "../_data/userRegistration.data";
 
-describe('LOGIN PAGE --POSITIVE', () => {
+describe('LOGIN PAGE --NEGATIVE', () => {
     before(() => {
         LoginPage.open();
         MainPage.verifyElementText(MainPage.header, H1LoginPage)
@@ -16,12 +15,12 @@ describe('LOGIN PAGE --POSITIVE', () => {
     });
 
     it('should NOT login user with wrong email and get fail notification', () => {
-        LoginPage.login({...student, email: 'wrong@gmail.com'});
+        LoginPage.login(studentWithWrongEmail);
         Notification.failMsgDisplayed();
     });
 
     it('should NOT login user with wrong password and get fail notification', () => {
-        LoginPage.login({...student, password: 'wrong'});
+        LoginPage.login(studentWithWrongPassword);
         Notification.failMsgDisplayed();
     });
 });
