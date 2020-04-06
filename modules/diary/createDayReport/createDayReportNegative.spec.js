@@ -12,7 +12,7 @@ before('should login as a STUDENT', () => {
 describe('CREATE DAY REPORT -- with all empty inputs', () => {
 
   it('should verify that user can not create dairy with all empty inputs', () => {
-    expect(CreateDayReportPage.saveBtn.isEnabled() && CreateDayReportPage.saveBtn.isClickable()).false;
+    expect(CreateDayReportPage.saveBtn.isClickable()).false;
   });
 });
 
@@ -23,7 +23,7 @@ describe('CREATE DAY REPORT -- with all empty `MARKS`', () => {
 
   it('should verify that user can not create dairy with all empty `MARKS`', () => {
     CreateDayReportPage.markEmptyScenario();
-    expect(CreateDayReportPage.saveBtn.isEnabled() && CreateDayReportPage.saveBtn.isClickable()).false;
+    expect(CreateDayReportPage.saveBtn.isClickable()).false;
   });
 
   it('should verify that required `MARKS`warning is displayed', () => {
@@ -38,7 +38,7 @@ describe('CREATE DAY REPORT -- with empty `MORALE` field', () => {
 
   it('should verify that user can not create dairy with empty `HOURS` field', () => {
     CreateDayReportPage.moraleEmptyFieldScenario();
-    expect(CreateDayReportPage.saveBtn.isEnabled() && CreateDayReportPage.saveBtn.isClickable()).false;
+    expect(CreateDayReportPage.saveBtn.isClickable()).false;
   });
 
   it('should verify that required `MORALE` field warning is displayed', () => {
@@ -47,14 +47,13 @@ describe('CREATE DAY REPORT -- with empty `MORALE` field', () => {
 });
 
 describe('CREATE DAY REPORT -- with empty `HOURS` field', () => {
-
   before('should refresh the page', () => {
     browser.refresh();
   });
 
   it('should verify that user can not create dairy with empty `HOURS` field', () => {
     CreateDayReportPage.hoursEmptyFieldScenario();
-    expect(CreateDayReportPage.saveBtn.isEnabled() && CreateDayReportPage.saveBtn.isClickable()).false;
+    expect(CreateDayReportPage.saveBtn.isClickable()).false;
   });
 
   it('should verify that required `HOURS` field warning is displayed', () => {
@@ -67,12 +66,13 @@ describe('CREATE DAY REPORT -- with incorrect HOURS input', () => {
   before('should refresh the page', () => {
     browser.refresh();
   });
+
   it('should verify that user can not create dairy with incorrect HOURS input', () => {
     CreateDayReportPage.hoursEmptyFieldScenario();
     for (let i = 0; i < hoursStudiedInputsInvalid.length; i++) {
       CreateDayReportPage.howManyHours.setValue(hoursStudiedInputsInvalid[i]);
     }
-    expect(CreateDayReportPage.saveBtn.isEnabled() && CreateDayReportPage.saveBtn.isClickable()).false;
+    expect(CreateDayReportPage.saveBtn.isClickable()).false;
   });
 
   it('should verify that incorrect HOURS input warning is displayed', () => {
@@ -90,7 +90,7 @@ describe('CREATE DAY REPORT -- with incorrect `HOW WAS YOUR DAY` input', () => {
     for (let i = 0; i < howWasYourDayInputsInvalid.length; i++) {
       CreateDayReportPage.howWasYourDay.setValue(howWasYourDayInputsInvalid[i]);
     }
-    expect(CreateDayReportPage.saveBtn.isEnabled() && CreateDayReportPage.saveBtn.isClickable()).false;
+    expect(CreateDayReportPage.saveBtn.isClickable()).false;
   });
 
   it('should verify that incorrect `HOW WAS YOUR DAY` input warning is displayed', () => {

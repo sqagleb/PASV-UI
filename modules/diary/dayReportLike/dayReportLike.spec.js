@@ -6,6 +6,7 @@ import {dailyReportList} from "../_data/dailyReportsList.data";
 import LoginPage from "../../user/_page/LoginPage";
 import {like} from "../_data/dayReportLike.data";
 import DiaryPage from "../_page/DiaryPage";
+import MainPage from "../../_page/MainPage";
 
 
 describe('DAY REPORT PAGE LIKE BUTTON TESTING', () => {
@@ -15,7 +16,7 @@ describe('DAY REPORT PAGE LIKE BUTTON TESTING', () => {
   });
 
   it('should have a correct page header', () => {
-    expect(DayReportLikePage.header.getText()).eq(dailyReportList.h1);
+    expect(MainPage.header.getText()).eq(dailyReportList.h1);
   });
 
 

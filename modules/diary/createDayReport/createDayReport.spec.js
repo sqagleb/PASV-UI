@@ -3,16 +3,18 @@ import CreateDayReportPage from '../_page/CreateDayReportPage';
 import {student} from '../../user/_data/user.data';
 import {createDayReport, hoursStudiedInputs, howWasYourDayInputs} from '../_data/createDayReport.data';
 import {expect} from "chai";
+import MainPage from "../../_page/MainPage";
+import {dailyReportList} from "../_data/dailyReportsList.data";
 
 describe('CREATE DAY REPORT', () => {
   before('should login as STUDENT and open page Create day report', () => {
     LoginPage.login(student);
     CreateDayReportPage.open();
-    browser.waitUntil(() => CreateDayReportPage.header.getText() === createDayReport.h1);
+    MainPage.verifyElementText(MainPage.header, createDayReport.h1)
   });
 
   it('should verify correct page header', () => {
-    expect(CreateDayReportPage.header.getText()).eq(createDayReport.h1);
+    expect(MainPage.header.getText()).eq(createDayReport.h1);
   });
 
   it('should create day report', () => {
@@ -26,13 +28,12 @@ describe('CREATE DAY REPORT', () => {
       CreateDayReportPage.howWasYourDay.setValue(howWasYourDayInputs[i]);
     }
     CreateDayReportPage.saveBtn.click();
-    browser.waitUntil(() => CreateDayReportPage.header.getText() === createDayReport.h1);
-    expect(CreateDayReportPage.header.getText()).eq(createDayReport.h1);
+    MainPage.verifyElementText(MainPage.header, dailyReportList.h1);
+    expect(MainPage.header.getText()).eq(dailyReportList.h1);
   });
 
   it('should check if the daily report was created', () => {
     expect(CreateDayReportPage.newDayReport.getText()).eq(howWasYourDayInputs[5]);
-    console.log(CreateDayReportPage.newDayReport.getText());
   });
 });
 
