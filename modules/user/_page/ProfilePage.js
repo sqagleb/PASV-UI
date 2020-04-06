@@ -37,12 +37,12 @@ class ProfilePage extends AppPage {
     return $('[qa="github"]');
   }
 
-  get coinTotal() {
-    return $('//div[@qa="user-achievement"]//span');
+  get coinsTotal() {
+    return $('[qa="user-achievement"]');
   }
 
-  get coinTotalTopRight() {
-    return $('//div[@class="justify-content-end collapse navbar-collapse"]//span');
+  get coinsTotalTopRight() {
+    return $('[class="justify-content-end collapse navbar-collapse"] span');
   }
 
   checkElemLink(link, keyword) {
@@ -50,8 +50,8 @@ class ProfilePage extends AppPage {
   }
 
   open() {
-    $('//a[@class="dropdown-toggle nav-link"]').click();
-    $('//button[contains(text(), "Profile")]').click();
+    $('[class="dropdown-toggle nav-link"]').click();
+    $('[qa="profile-link"] button').click();
   }
 }
 

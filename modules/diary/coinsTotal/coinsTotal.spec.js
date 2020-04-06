@@ -6,67 +6,66 @@ import LogoutPage from '../../user/_page/LogoutPage';
 import DiaryPage from '../_page/DiaryPage';
 import ProfilePage from '../../user/_page/ProfilePage';
 
-let beforeCoinAmount = 0;
-let newCoinAmount = 0;
-let topCoinAmount = 0;
+let beforeCoinsNumber = 0;
+let newCoinsNumber = 0;
+let topCoinsNumber = 0;
 
-describe('SAVE COINS AMOUNT BEFORE ', () => {
+
+describe('SAVE COINS NUMBER BEFORE', () => {
   before(() => {
     LoginPage.login(student);
-    DiaryPage.goToDiaryPage();
+    DiaryPage.open();
     CreateDayReportPage.createNewDayReport();
   });
 
-  it('should save current amount of user coins from the Profile page', () => {
+  it('should save current number of student coins from the Profile page', () => {
     ProfilePage.open();
     browser.refresh();
-    beforeCoinAmount = ProfilePage.coinTotal.getText();
-    topCoinAmount = ProfilePage.coinTotalTopRight.getText();
-    expect(topCoinAmount).equal(beforeCoinAmount);
+    beforeCoinsNumber = ProfilePage.coinsTotal.getText();
+    topCoinsNumber = ProfilePage.coinsTotalTopRight.getText();
+    expect(topCoinsNumber).eq(beforeCoinsNumber);
   });
 
-  it('should logout as user', () => {
+  after('should logout from student', () => {
     LogoutPage.logout();
   });
 });
 
+
 describe('APPROVE DAY REPORT BY ADMIN', () => {
   before(() => {
     LoginPage.login(admin);
-    DiaryPage.goToDiaryPage();
+    DiaryPage.open();
   });
 
   it('should approve day report', () => {
     DiaryPage.approveBtn.click();
   });
 
-  it('should logout as admin', () => {
+  after('should logout from admin', () => {
     LogoutPage.logout();
   });
 });
 
-describe('VERIFY TOTAL COINS AMOUNT AFTER ADMIN APPROVED REPORT', () => {
+
+describe('VERIFY TOTAL NUMBER OF COINS AFTER ADMIN REPORT APPROVAL', () => {
   before(() => {
     LoginPage.login(student);
     ProfilePage.open();
   });
 
-  it('should verify new coin amount not equal coin amount before', () => {
+  it('should verify that the number of coins have increased by 1 after report approval', () => {
     browser.refresh();
-    topCoinAmount = ProfilePage.coinTotalTopRight.getText();
-    newCoinAmount = ProfilePage.coinTotal.getText();
-    expect(newCoinAmount).to.not.equal(beforeCoinAmount);
-  });
-
-  it('should verify new coin amount equal to amount of coin before + 1', () => {
-    expect(Number.parseInt(newCoinAmount)).equal(Number.parseInt(beforeCoinAmount) + 1);
+    topCoinsNumber = ProfilePage.coinsTotalTopRight.getText();
+    newCoinsNumber = ProfilePage.coinsTotal.getText();
+    expect(Number.parseInt(newCoinsNumber)).eq(Number.parseInt(beforeCoinsNumber) + 1);
   });
 
   it(
-    'should verify amount of coin from the top left corner is the match to the amount ' +
-      'of coin under the header on the Profile page',
+    'should verify that the number of coins from the top right corner matches the number ' +
+      'of coins under the header on the Profile page',
     () => {
-      expect(topCoinAmount).equal(newCoinAmount);
+      expect(topCoinsNumber).eq(newCoinsNumber);
     },
   );
 });
