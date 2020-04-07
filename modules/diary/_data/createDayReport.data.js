@@ -16,15 +16,11 @@ const howWasYourDayInputsInvalid = [
 
 
 const howWasYourDayInputs = [
-  '!@#$%^&*()!@#$%^&*()<>?|":~+_-',
-  '123456789123456789123456789123456789',
-  'Привет! Как у вас дела? Нравится ли вам учиться?',
-  'WRITE WHAT IS USEFUL FOR SELF-DEVELOPMENT, LEARNING, OR PRACTICE YOU DID TODAY',
-  'Different fonts were used on the Harry Potter book covers, for its chapter title and elsewhere. ' +
-  'The lettering used for the book title is very similar to a typeface called Hocus Pocus, ' +
-  'which comes in four styles and each with a complete character set. As for the chapter titles and page numbers,' +
-  ' a font called Able by Marcus Burlile resembles their lettering. For the handwriting of Rubeus Hagrid, ' +
-  'it resembles Felt Tip Roman by Mark Simonson.',
+  '!@#$%^&*()!@#$%^&*()<>?|":~',
+  '123456789123456789123456789',
+  'Привет!Желаю вам всего хорошего!',
+  'WRITE WHAT IS USEFUL FOR SELF-DEVELOPMENT',
+  'Different fonts were used on the Harry Potter book covers, for its chapter title and elsewhere.',
   'practiced code, read documents'];
 //5 scenarios: symbols, numbers, Russian alphabet text, capital letters, large text
 
