@@ -1,7 +1,6 @@
 import faker from 'faker';
 
 const H1RegisterPage = 'User Register';
-const H1LoginPage = 'User Login';
 
 const firstName = faker.name.firstName();
 const lastName = faker.name.lastName();
@@ -27,4 +26,4 @@ const pageRegisterData = {
   buttonText: 'Submit',
 };
 
-export { H1RegisterPage, H1LoginPage, newUser, pageRegisterData };
+export { H1RegisterPage, newUser, pageRegisterData };

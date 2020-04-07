@@ -1,46 +1,46 @@
 import AppPage from '../../_page/AppPage';
-import { newUser, H1RegisterPage, H1LoginPage } from '../_data/userRegistration.data';
+import { newUser } from '../_data/userRegistration.data';
 import MainPage from '../../_page/MainPage';
 
 class RegistrationPage extends AppPage {
   get firstNameInput() {
-    return $('//form//input[@name="firstName"]');
+    return $('[name="firstName"]');
   }
 
   get lastNameInput() {
-    return $('//form//input[@name="lastName"]');
+    return $('[name="lastName"]');
   }
 
   get cellPhoneNumberInput() {
-    return $('//form//input[@name="phone"]');
+    return $('[name="phone"]');
   }
 
   get emailInput() {
-    return $('//form//input[@name="email"]');
+    return $('[name="email"]');
   }
 
   get passwordInput() {
-    return $('//form//input[@name="password"]');
+    return $('[name="password"]');
   }
 
   get aboutInput() {
-    return $('//form//textarea[@name="about"]');
+    return $('[name="about"]');
   }
 
   get myGoalsInput() {
-    return $('//form//textarea[@name="goals"]');
+    return $('[name="goals"]');
   }
 
   get countryOption() {
-    return $('//form//select[@name="countryName"]');
+    return $('[name="countryName"]');
   }
 
   get englishLevelOption() {
-    return $('//form//select[@name="englishLevel"]');
+    return $('[name="englishLevel"]');
   }
 
   get submitBtn() {
-    return $('//form//button[@type="submit"]');
+    return $('[type="submit"]');
   }
 
   open() {
@@ -48,7 +48,7 @@ class RegistrationPage extends AppPage {
   }
 
   // method for create new user
-  newUserRegisterVerifyH1() {
+  registerNewUser() {
     this.firstNameInput.setValue(newUser.firstName);
     this.lastNameInput.setValue(newUser.lastName);
     this.cellPhoneNumberInput.setValue(newUser.phone);
@@ -59,7 +59,6 @@ class RegistrationPage extends AppPage {
     this.countryOption.selectByVisibleText(newUser.country);
     this.englishLevelOption.selectByVisibleText(newUser.englishLevel);
     MainPage.smartClick(this.submitBtn);
-    browser.waitUntil(() => MainPage.header.getText() === H1LoginPage, 5000);
   }
 }
 export default new RegistrationPage();
