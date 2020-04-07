@@ -1,6 +1,5 @@
 const createDayReport = {
   h1: 'Create day report',
-  checkMarksTitle: 'Marks to your daily report Required'
 };
 
 const howWasYourDayInputsInvalid = [

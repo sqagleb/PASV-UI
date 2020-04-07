@@ -14,9 +14,9 @@ let topCoinsNumber = 0;
 
 describe('SAVE COINS NUMBER BEFORE', () => {
   before(() => {
-    LoginPage.login(student);
-    DiaryPage.open();
-    CreateDayReportPage.createNewDayReport();
+      LoginPage.login(student);
+      DiaryPage.open();
+      CreateDayReportPage.createNewDayReport();
   });
 
   it('should save current number of student coins from the Profile page', () => {

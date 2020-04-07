@@ -19,15 +19,8 @@ class DailyReportsPage extends AppPage {
   }
 
   get newDayReport() {
-    return browser.$('//*[@qa="day-report-item-0"]//*[@qa="description"]');
+    return browser.$('[class="mt-2"]');
   }
-
-  checkLast3Reports() {
-    for (let i = 0; i < 3; i++) {
-      browser.$(`[qa="day-report-item-${i}"]`);
-    }
-  }
-
 
 }
 
