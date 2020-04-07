@@ -11,7 +11,7 @@ before('should login as a STUDENT', () => {
 
 describe('CREATE DAY REPORT -- with all empty inputs', () => {
 
-  it('should verify that user can not create dairy with all empty inputs', () => {
+  it('should verify that user can not create diary with all empty inputs', () => {
     expect(CreateDayReportPage.saveBtn.isClickable()).false;
   });
 });
@@ -21,7 +21,7 @@ describe('CREATE DAY REPORT -- with all empty `MARKS`', () => {
     browser.refresh();
   });
 
-  it('should verify that user can not create dairy with all empty `MARKS`', () => {
+  it('should verify that user can not create diary with all empty `MARKS`', () => {
     CreateDayReportPage.markEmptyScenario();
     expect(CreateDayReportPage.saveBtn.isClickable()).false;
   });
@@ -36,7 +36,7 @@ describe('CREATE DAY REPORT -- with empty `MORALE` field', () => {
     browser.refresh();
   });
 
-  it('should verify that user can not create dairy with empty `HOURS` field', () => {
+  it('should verify that user can not create diary with empty `HOURS` field', () => {
     CreateDayReportPage.moraleEmptyFieldScenario();
     expect(CreateDayReportPage.saveBtn.isClickable()).false;
   });
@@ -51,7 +51,7 @@ describe('CREATE DAY REPORT -- with empty `HOURS` field', () => {
     browser.refresh();
   });
 
-  it('should verify that user can not create dairy with empty `HOURS` field', () => {
+  it('should verify that user can not create diary with empty `HOURS` field', () => {
     CreateDayReportPage.hoursEmptyFieldScenario();
     expect(CreateDayReportPage.saveBtn.isClickable()).false;
   });
@@ -67,7 +67,7 @@ describe('CREATE DAY REPORT -- with incorrect HOURS input', () => {
     browser.refresh();
   });
 
-  it('should verify that user can not create dairy with incorrect HOURS input', () => {
+  it('should verify that user can not create diary with incorrect HOURS input', () => {
     CreateDayReportPage.hoursEmptyFieldScenario();
     for (let i = 0; i < hoursStudiedInputsInvalid.length; i++) {
       CreateDayReportPage.howManyHours.setValue(hoursStudiedInputsInvalid[i]);
@@ -85,7 +85,7 @@ describe('CREATE DAY REPORT -- with incorrect `HOW WAS YOUR DAY` input', () => {
     browser.refresh();
   });
 
-  it('should verify that user can not create dairy with incorrect `HOW WAS YOUR DAY` input', () => {
+  it('should verify that user can not create diary with incorrect `HOW WAS YOUR DAY` input', () => {
     CreateDayReportPage.howWasYourDayNegativeScenario();
     for (let i = 0; i < howWasYourDayInputsInvalid.length; i++) {
       CreateDayReportPage.howWasYourDay.setValue(howWasYourDayInputsInvalid[i]);
