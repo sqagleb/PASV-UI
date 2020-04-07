@@ -1,6 +1,7 @@
+const name = "TEST-" + Math.random().toFixed(3);
 
 const newGroup = {
-  name: "TEST GROUP",
+  name: name,
   description: 'test test test test test',
   access: 'All'
 };
