@@ -1,12 +1,12 @@
 import { expect } from 'chai';
-import DayReportLikePage from '../_page/DayReportLikePage';
-import CreateDayReportPage from "../../diary/_page/CreateDayReportPage";
+import CreateDayReportPage from "../_page/CreateDailyReportsPage";
 import { student } from '../../user/_data/user.data';
-import {dailyReportList} from "../_data/dailyReportsList.data";
+import {dailyReportList} from "../_data/dailyReports.data";
 import LoginPage from "../../user/_page/LoginPage";
-import {like} from "../_data/dayReportLike.data";
-import DiaryPage from "../_page/DiaryPage";
+import {like} from "../_data/dailyReports.data";
+import DiaryPage from "../_page/DailyReportsPage";
 import MainPage from "../../_page/MainPage";
+import DailyReportsPage from '../_page/DailyReportsPage';
 
 
 describe('DAY REPORT PAGE LIKE BUTTON TESTING', () => {
@@ -22,13 +22,13 @@ describe('DAY REPORT PAGE LIKE BUTTON TESTING', () => {
 
   it('should Like button be clickable', () => {
     CreateDayReportPage.createNewDayReport();
-    DayReportLikePage.likeBtn.click();
-    browser.waitUntil(() => DayReportLikePage.likeBtn.getText() === like.like1 );
-    expect(DayReportLikePage.likeBtn.getText()).eq(like.like1);
+    DailyReportsPage.likeBtn.click();
+    browser.waitUntil(() => DailyReportsPage.likeBtn.getText() === like.like1 );
+    expect(DailyReportsPage.likeBtn.getText()).eq(like.like1);
   });
 
   it('should Like button be disabled', () => {
-    expect(DayReportLikePage.likeBtn.isEnabled()).false;
+    expect(DailyReportsPage.likeBtn.isEnabled()).false;
   });
 
 });

@@ -1,18 +1,11 @@
 import AppPage from '../../_page/AppPage';
-import {hoursStudiedInputs, howWasYourDayInputs} from "../_data/createDayReport.data";
+import {hoursStudiedInputs, howWasYourDayInputs} from "../_data/createDailyReports.data";
+import DiaryPage from "./DailyReportsPage";
 
-class CreateDayReportPage extends AppPage {
+class CreateDailyReportsPage extends AppPage {
 
   open() {
     super.open('https://stage.pasv.us/diary/create');
-  }
-
-  get header() {
-    return browser.$('h1');
-  }
-
-  get checkMarksTitle() {
-    return browser.$('[class="mb-2"]');
   }
 
   get moraleLevel() {
@@ -31,33 +24,6 @@ class CreateDayReportPage extends AppPage {
     return browser.$('button[type="submit"]');
   }
 
-  get createDayReportBtn() {
-    return browser.$('[qa="create-day-report-button"]');
-  }
-
-  get newDayReport() {
-    return browser.$('//*[@qa="day-report-item-0"]//*[@qa="description"]');
-  }
-
-
-  // get instructionToNeedHelp1() {
-  //   return browser.$('//*[@for="input-0"]//*[@class="text-secondary"]');
-  // }
-  //
-  // get instructionToUnderstoodEverything() {
-  //   return browser.$(
-  //     '//*[@for="input-1"]//*[@class="text-secondary"]',
-  //   );
-  // }
-  //
-  // get instructionToHelpedClassmates() {
-  //   return browser.$('//*[@for="input-2"]//*[@class="text-secondary"]');
-  // }
-  //
-  // get slogan() {
-  //   return browser.$('[qa="app-slogan"]');
-  // }
-
   get hoursIncorrectInputWarning() {
     return browser.$('[class = "invalid-feedback"]');
   }
@@ -69,15 +35,13 @@ class CreateDayReportPage extends AppPage {
   get requiredWarning() {
     return browser.$('//*[@class = "invalid-feedback w-auto ml-2"]');
   }
+
   get requiredMarks() {
     return browser.$('//*[@class = "invalid-feedback d-inline"]');
   }
 
   get checkMark() {
     return browser.$('#input-4');
-  }
-  get moraleList (){
-    return browser.$$('//*[@name="morale"]//*[@value]')
   }
 
   selectDropdown() {
@@ -113,7 +77,7 @@ class CreateDayReportPage extends AppPage {
   }
 
   createNewDayReport() {
-    this.createDayReportBtn.click();
+    DiaryPage.createDayReportBtn.click();
     this.checkMark.click();
     this.moraleLevel.selectByVisibleText('9');
     this.howManyHours.setValue(hoursStudiedInputs[4]);
@@ -122,4 +86,4 @@ class CreateDayReportPage extends AppPage {
   }
 }
 
-export default new CreateDayReportPage();
+export default new CreateDailyReportsPage();

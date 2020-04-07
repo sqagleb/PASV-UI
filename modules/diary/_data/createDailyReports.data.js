@@ -3,11 +3,6 @@ const createDayReport = {
   checkMarksTitle: 'Marks to your daily report Required'
 };
 
-const instructionsToCheckMarks = {
-  instructionToNeedHelp: 'Describe what difficulties you have, we will contact you and help',
-  instructionToUnderstoodEverything: 'It means that you are not experiencing difficulties and understand',
-  instructionToHelpedClassmates: 'Specify to whom and on what topic you helped'
-};
 const howWasYourDayInputsInvalid = [
   '',
   'Hello 123',
@@ -33,7 +28,6 @@ const hoursStudiedInputsInvalid = ['','восемь', '11', '111'];
 
 export {
   createDayReport,
-  instructionsToCheckMarks,
   howWasYourDayInputs,
   hoursStudiedInputs,
   hoursStudiedInputsInvalid,

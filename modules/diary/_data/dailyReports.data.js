@@ -4,4 +4,9 @@ const dailyReportList = {
   notificationText: 'day reports'
 };
 
-export { dailyReportList };
+const like = {
+  like1 : 'I like this 👍1',
+};
+
+
+export { dailyReportList, like };
