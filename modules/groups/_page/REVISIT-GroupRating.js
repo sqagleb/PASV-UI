@@ -1,6 +1,6 @@
 import AppPage from '../../_page/AppPage';
 
-class GroupRating extends AppPage {
+class REVISITGroupRating extends AppPage {
 
   get ratingLink() {
     return $('//a[contains(text(),"Rating")]');
@@ -58,4 +58,4 @@ class GroupRating extends AppPage {
     return $$('//div[@class="rt-td"]');
   }
 }
-export default new GroupRating();
+export default new REVISITGroupRating();

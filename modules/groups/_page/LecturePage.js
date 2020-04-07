@@ -1,61 +1,62 @@
 import AppPage from '../../_page/AppPage';
+import GroupPage from './GroupPage';
+import LoginPage from '../../user/_page/LoginPage';
+import { newLecture } from '../_data/groupLecture.data';
+import GroupsListPage from "./GroupsListPage";
+import MainPage from "../../_page/MainPage";
+import Menu from "../../_page/Menu";
+import LogoutPage from "../../user/_page/LogoutPage";
 
 class LecturePage extends AppPage {
-
-  get header() {
-    return browser.$('//h1');
+  get nameInput() {
+    return $('[name="name"]');
   }
 
-  get lectureInTheList() {
-    return browser.$('//a[@qa="link"]//span');
+  get videoLinkInput() {
+    return $('[name="video"]');
   }
 
-  get video() {
-    return browser.$('//iframe[@title="YouTube video player"]');
+  get activeCheckbox() {
+    return $('[type="checkbox"]');
   }
 
-  get dislikeBtn() {
-    return browser.$('//h3//button[text()="Dislike"]');
+  get dateInput() {
+    return $('[placeholder="Date"]');
   }
 
-  get likeBtn() {
-    return browser.$('//h3//button[text()="Like"]');
+  get descriptionInput() {
+    return $('[name="description"]');
   }
 
-  get markAsUnderstoodBtn() {
-    return browser.$('//div//button[text()="Mark as understood"]');
+  get homeworkInput() {
+    return $('[name="homework"]');
   }
 
-  get homeworkHeader() {
-    return browser.$('//h3[text()="Homework"]');
+  get reviewerDropdown() {
+    return $('[name="homeworkReviewer"]');
   }
 
-  get homeworkDescription() {
-    return browser.$('//h3[text()="Homework"]');
+  get saveBtn() {
+    return $('[type="submit"]');
   }
 
-  get sendYourHomeworkToReviewField() {
-    return browser.$('//textarea[@name="homework"]');
+  get lectureLink(){
+    return $('[qa="link"]')
   }
 
-  get sendHomeworkToReviewBtn() {
-    return browser.$('//button[text()="Send homework to review"]');
-  }
-
-  get createLectureBtn() {
-    return browser.$('//a[@qa="create-lecture-button"]');
-  }
-
-  get commentField() {
-    return browser.$('//textarea[@name="content"]');
-  }
-
-  get addCommentBtn() {
-    return browser.$('//button[text()="Add comment"]');
-  }
-
-  lectureLink(lectureName) {
-    return browser.$(`//span[text() = "${lectureName}"]`);
+  createLecture(role) {
+    LoginPage.login(role);
+    MainPage.smartClick(Menu.groupsLink);
+    browser.waitUntil(()=> GroupsListPage.testGroup.isDisplayed())
+    GroupsListPage.testGroup.click();
+    GroupPage.createLectureBtn.click();
+    this.nameInput.setValue(newLecture.name);
+    this.videoLinkInput.setValue(newLecture.video);
+    this.dateInput.setValue(newLecture.date);
+    this.descriptionInput.setValue(newLecture.description);
+    this.homeworkInput.setValue(newLecture.homework);
+    this.saveBtn.click();
+    LogoutPage.logout();
   }
 }
 

@@ -1,7 +1,7 @@
 import Menu from '../../_page/Menu';
 import LoginPage from '../../user/_page/LoginPage';
 import LogoutPage from '../../user/_page/LogoutPage';
-import GroupsPage from '../_page/GroupsPage';
+import GroupsPage from '../_page/GroupPage';
 import { student, admin } from '../../user/_data/user.data';
 
 describe('GROUPS QUIZ TAB', () => {
@@ -18,7 +18,7 @@ describe('GROUPS QUIZ TAB', () => {
   });
 
   it('should click Groups link', () => {
-    Menu.groupLink.click();
+    Menu.groupsLink.click();
     browser.waitUntil(() => Menu.h1.getText() === 'Groups');
   });
 
