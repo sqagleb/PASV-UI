@@ -38,7 +38,7 @@ class ProfilePage extends AppPage {
   }
 
   get coinsTotal() {
-    return $('[qa="user-achievement"]');
+    return $('[qa="user-achievement"] span');
   }
 
   get coinsTotalTopRight() {

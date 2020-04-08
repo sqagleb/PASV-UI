@@ -1,6 +1,5 @@
 import { expect } from 'chai';
 import LoginPage from '../../user/_page/LoginPage';
-import CreateDayReportPage from '../../diary/_page/CreateDayReportPage';
 import { admin, student } from '../../user/_data/user.data';
 import LogoutPage from '../../user/_page/LogoutPage';
 import DiaryPage from '../_page/DiaryPage';
@@ -14,8 +13,6 @@ let topCoinsNumber = 0;
 describe('SAVE COINS NUMBER BEFORE', () => {
   before(() => {
     LoginPage.login(student);
-    DiaryPage.open();
-    CreateDayReportPage.createNewDayReport();
   });
 
   it('should save current number of student coins from the Profile page', () => {
@@ -69,3 +66,4 @@ describe('VERIFY TOTAL NUMBER OF COINS AFTER ADMIN REPORT APPROVAL', () => {
     },
   );
 });
+
