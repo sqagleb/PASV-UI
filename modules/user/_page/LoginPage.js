@@ -1,5 +1,5 @@
 import AppPage from '../../_page/AppPage';
-
+import HomePage from "../../_page/HomePage";
 class LoginPage extends AppPage {
   get emailInput() {
     return $('//input[@name="email"]');
@@ -30,7 +30,7 @@ class LoginPage extends AppPage {
     this.emailInput.setValue(role.email);
     this.passwordInput.setValue(role.password);
     this.submitBtn.click();
-    browser.pause(2000);
+    browser.waitUntil(() => HomePage.header.getText() === role.name);
   }
 
   open() {
