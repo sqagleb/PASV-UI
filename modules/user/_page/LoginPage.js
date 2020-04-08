@@ -1,5 +1,5 @@
 import AppPage from '../../_page/AppPage';
-import HomePage from "../../_page/HomePage";
+
 class LoginPage extends AppPage {
   get emailInput() {
     return $('//input[@name="email"]');
@@ -21,8 +21,12 @@ class LoginPage extends AppPage {
     return $('//h4[@class="notification-title"]');
   }
 
-  get invalidEmailNotification(){
-    return $('//div[@class="invalid-feedback"]')
+  get invalidEmailNotification() {
+    return $('//div[@class="invalid-feedback"]');
+  }
+
+  get requiredNotification(){
+    return $('.invalid-feedback.w-auto.ml-2');
   }
 
   login(role) {
@@ -30,7 +34,7 @@ class LoginPage extends AppPage {
     this.emailInput.setValue(role.email);
     this.passwordInput.setValue(role.password);
     this.submitBtn.click();
-    browser.waitUntil(() => HomePage.header.getText() === role.name);
+    browser.pause(2000);
   }
 
   open() {
