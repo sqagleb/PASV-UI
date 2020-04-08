@@ -47,6 +47,14 @@ class GroupPage extends AppPage {
     return $('[qa="create-lecture-button"]');
   }
 
+  get descriptionTextArea() {
+    return $('[name="description"]');
+  }
+
+  get saveBtn() {
+    return $('[type="submit"]')
+  }
+
   createNewGroup(role) {
     LoginPage.login(role);
     MainPage.smartClick(Menu.groupsLink);

@@ -28,6 +28,7 @@ describe('ADD QUIZ TO A RECENTLY CREATED GROUP', () => {
   it('should add any Quiz to the group', () => {
     GroupPage.editBtn.click();
     GroupPage.showAllBtn.scrollIntoView();
+    browser.pause(3000);
     MainPage.smartClick(GroupPage.showAllBtn);
     MainPage.smartClick(GroupPage.showAllBtn);
     MainPage.smartClick(GroupPage.addQuizBtn);
@@ -40,6 +41,15 @@ describe('ADD QUIZ TO A RECENTLY CREATED GROUP', () => {
     GroupPage.editBtn.click();
     GroupPage.showAllBtn.scrollIntoView();
     GroupPage.removeQuizBtn.click();
+    Notification.successMsgDisplayed();
+  });
+
+  it('should edit Test Page and verify SaveBtn', () => {
+    GroupsListPage.open();
+    GroupPage.editBtn.click();
+    GroupPage.descriptionTextArea.clearValue();
+    GroupPage.descriptionTextArea.setValue('Unstable');
+    MainPage.smartClick(GroupPage.saveBtn);
     Notification.successMsgDisplayed();
   });
 });
