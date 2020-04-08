@@ -2,19 +2,27 @@ import AppPage from '../../_page/AppPage';
 import LoginPage from '../../user/_page/LoginPage';
 import Menu from '../../_page/Menu';
 import LogoutPage from '../../user/_page/LogoutPage';
-import MainPage from "../../_page/MainPage";
-import {newGroup} from "../_data/groupCreate.data";
+import MainPage from '../../_page/MainPage';
+import { newGroup } from '../_data/groupCreate.data';
 
 class GroupPage extends AppPage {
-
   get groupTitle() {
     return $('[qa="group-title"]');
   }
-
-  get quizTabBtn() {
-    return $('//a[contains(text(),"Quiz")]');
+  get editBtn() {
+    return $('[qa="edit-button"]');
+  }
+  get showAllBtn() {
+    return $('//button[contains(text(),"Show all")]');
   }
 
+  get addQuizBtn() {
+    return $('//button[contains(text(),"Add")]');
+  }
+
+  get removeQuizBtn() {
+    return $('//button[contains(text(),"Remove")]');
+  }
   get createGroupBtn() {
     return $('.btn.btn-secondary');
   }
@@ -35,8 +43,8 @@ class GroupPage extends AppPage {
     return $('[type="submit"]');
   }
 
-  get createLectureBtn(){
-    return $('[qa="create-lecture-button"]')
+  get createLectureBtn() {
+    return $('[qa="create-lecture-button"]');
   }
 
   createNewGroup(role) {

@@ -1,5 +1,4 @@
 import { expect } from 'chai';
-import Menu from '../../_page/Menu';
 import LoginPage from '../../user/_page/LoginPage';
 import LogoutPage from '../../user/_page/LogoutPage';
 import GroupPage from '../_page/GroupPage';
@@ -22,7 +21,7 @@ describe('TEST NEW GROUP CREATE AS ADMIN', () => {
 
   it('should open recently created group and check title', () => {
     GroupsListPage.testGroup.click();
-    expect(MainPage.header.getText().includes(newGroup.name)).true;
+    expect(GroupPage.groupTitle.getText().includes(newGroup.name)).true;
   });
 });
 

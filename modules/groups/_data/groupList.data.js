@@ -1,5 +1,5 @@
 const elementText = {
-  header: 'Groups'
-}
+  header: 'Groups',
+};
 
-export { elementText};
+export { elementText };

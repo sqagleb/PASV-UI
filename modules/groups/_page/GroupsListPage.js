@@ -1,5 +1,6 @@
 import AppPage from "../../_page/AppPage";
 import Menu from "../../_page/Menu";
+import {newGroup} from "../_data/groupCreate.data";
 
 class GroupsListPage extends AppPage {
   open(){
@@ -7,7 +8,7 @@ class GroupsListPage extends AppPage {
   }
 
   get testGroup() {
-    return $('//a[contains(text(),"TEST GROUP")]');
+    return $(`//a[contains(text(),"${newGroup.name}")]`);
   }
 }
 
