@@ -24,7 +24,7 @@ describe('TESTING NEW LECTURE', () => {
 
   it('should verify the lecture can be marked as understood', () => {
     GroupsListPage.understoodBtn.click();
-    expect(GroupsListPage.understoodText.getText() === newLecture.markAsUnderstood);
+    expect(GroupsListPage.understoodText.getText() === newLecture.markAsUnderstood).true;
   });
 
   it('should verify the lecture can be liked', () => {
