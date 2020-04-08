@@ -1,8 +1,8 @@
 import {expect} from "chai";
 import LoginPage from '../../user/_page/LoginPage';
-import CreateDayReportPage from '../_page/CreateDayReportPage';
+import CreateDayReportPage from '../_page/CreateDailyReportsPage';
 import {student} from '../../user/_data/user.data';
-import {hoursStudiedInputsInvalid, howWasYourDayInputsInvalid} from "../_data/createDayReport.data";
+import {hoursStudiedInputsInvalid, howWasYourDayInputsInvalid} from "../_data/createDailyReports.data";
 
 before('should login as a STUDENT', () => {
   LoginPage.login(student);

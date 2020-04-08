@@ -1,47 +1,49 @@
-import Menu from '../../_page/Menu';
+import { expect } from 'chai';
+import GroupPage from '../_page/GroupPage';
+import { admin } from '../../user/_data/user.data';
 import LoginPage from '../../user/_page/LoginPage';
 import LogoutPage from '../../user/_page/LogoutPage';
-import GroupsPage from '../_page/GroupsPage';
-import { student, admin } from '../../user/_data/user.data';
+import GroupsListPage from '../_page/GroupsListPage';
+import MainPage from '../../_page/MainPage';
+import Notification from '../../_page/Notification';
+import { elementText } from '../_data/groupList.data';
+import { newGroup } from '../_data/groupCreate.data';
 
-describe('GROUPS QUIZ TAB', () => {
-  before(() => {
-    GroupsPage.createNewGroup(admin);
-    LoginPage.login(student);
+before(() => {
+  GroupPage.createNewGroup(admin);
+  LoginPage.login(admin);
+});
+
+describe('ADD QUIZ TO A RECENTLY CREATED GROUP', () => {
+  it('should open Groups List page and verify header', () => {
+    GroupsListPage.open();
+    expect(MainPage.header.getText()).eq(elementText.header);
   });
 
-  it('should check header is student name', () => {
-    const element = Menu.h1;
-    const actual = element.getText();
-    const expected = 'Student PASV';
-    expect(actual).equals(expected);
+  it('should open Recently created group and verify Group name', () => {
+    GroupsListPage.testGroup.click();
+    expect(GroupPage.groupTitle.getText().includes(newGroup.name)).true;
   });
 
-  it('should click Groups link', () => {
-    Menu.groupLink.click();
-    browser.waitUntil(() => Menu.h1.getText() === 'Groups');
+  it('should add any Quiz to the group', () => {
+    GroupPage.editBtn.click();
+    GroupPage.showAllBtn.scrollIntoView();
+    MainPage.smartClick(GroupPage.showAllBtn);
+    MainPage.smartClick(GroupPage.showAllBtn);
+    MainPage.smartClick(GroupPage.addQuizBtn);
+    Notification.successMsgDisplayed();
   });
 
-  it('should open Existed Group "GROUP FOR TEST" link', () => {
-    GroupsPage.testGroup.click();
-    browser.waitUntil(() => Menu.h1.getText() === 'Group GROUP FOR TEST');
+  it('should open the Group and verify quiz is present and remove it', () => {
+    GroupsListPage.open();
+    GroupsListPage.testGroup.click();
+    GroupPage.editBtn.click();
+    GroupPage.showAllBtn.scrollIntoView();
+    GroupPage.removeQuizBtn.click();
+    Notification.successMsgDisplayed();
   });
+});
 
-  it('should check if quiz tab exist', () => {
-    expect(GroupsPage.quizTabBtn.isDisplayed()).true;
-  });
-
-  it('should click quiz Tab Btn', () => {
-    GroupsPage.quizTabBtn.click();
-    browser.pause(1000);
-  });
-
-  it('should check redirection to quiz page', () => {
-    const element = browser.getUrl();
-    expect(element.includes('quiz')).true;
-  });
-
-  after('should log out', () => {
-    LogoutPage.logout();
-  });
+after('should logout', () => {
+  LogoutPage.logout();
 });

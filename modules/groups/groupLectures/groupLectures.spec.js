@@ -1,84 +1,61 @@
-import LoginPage from '../../user/_page/LoginPage';
-import GroupsPage from '../_page/GroupsPage';
-import LecturePage from '../_page/LecturePage';
-import { admin, student } from '../../user/_data/user.data';
-import { groupsLectures } from '../_data/groupsLectures.data.js';
-import CreateLecturePage from '../_page/CreateLecturePage';
-import { lectureName } from '../_page/CreateLecturePage';
-import { lectures } from "../_data/groupsLectures.data";
+import { expect } from 'chai';
 
-describe('GROUPS LECTURES', () => {
-  before('Create new Group and Lecture as an Admin, login as a Student', () => {
-    GroupsPage.createNewGroup(admin);
-    CreateLecturePage.createNewLecture();
+import GroupPage from '../_page/GroupPage';
+import LecturePage from '../_page/LecturePage';
+import GroupsListPage from '../_page/GroupsListPage';
+import { admin, student } from '../../user/_data/user.data';
+import LoginPage from '../../user/_page/LoginPage';
+import { newLecture } from '../_data/groupLecture.data';
+
+
+describe('TESTING NEW LECTURE', () => {
+  before(() => {
+    GroupPage.createNewGroup(admin);
+    LecturePage.createLecture(admin);
     LoginPage.login(student);
   });
 
-  it('should click top menu Groups', () => {
-    GroupsPage.groupsLink.click();
+  it('should verify lecture is accessible from Group page', () => {
+    GroupsListPage.open();
+    GroupsListPage.testGroup.click();
+    browser.waitUntil(() => GroupsListPage.testLecture.isClickable());
+    GroupsListPage.testLecture.click();
   });
 
-  it('should verify the header on Groups Page is correct', () => {
-    const actual = GroupsPage.header.getText();
-    const expected = groupsLectures.groupsHeader;
-    expect(actual).eq(expected);
+  it('should verify the lecture can be marked as understood', () => {
+    GroupsListPage.understoodBtn.click();
+    expect(GroupsListPage.understoodText.getText() === newLecture.markAsUnderstood).true;
   });
 
-  it('should click group name in the list', () => {
-    GroupsPage.groupNameLink.scrollIntoView();
-    GroupsPage.groupNameLink.click();
+  it('should verify the lecture can be liked', () => {
+    GroupsListPage.likeBtn.click();
+    browser.waitUntil(() => GroupsListPage.btnBadge.isDisplayed());
   });
 
-  it('should verify the header on Group Name Page is correct', () => {
-    const actual = LecturePage.header.getText();
-    const expected = lectures.groupNameHeader;
-    expect(actual).eq(expected);
+  it('should verify the lecture can be disliked', () => {
+    GroupsListPage.dislikeBtn.click();
+    browser.waitUntil(() => GroupsListPage.btnBadge.isDisplayed());
   });
 
-  it('should choose lecture in the list', () => {
-    LecturePage.lectureLink(lectureName).scrollIntoView();
-    LecturePage.lectureLink(lectureName).click();
+  it('should verify homework is sent for review', () => {
+    GroupsListPage.homeworkTextBox.click();
+    GroupsListPage.homeworkTextBox.setValue(newLecture.homework);
+    GroupsListPage.sendHomeworkBtn.click();
+    browser.waitUntil(() => GroupsListPage.newHomeworkBadge.isDisplayed());
   });
 
-  it('should verify video is displaying', () => {
-    LecturePage.video.isDisplayed();
+  it('should verify commenting the lecture', () => {
+    GroupsListPage.commentTextBox.click();
+    GroupsListPage.commentTextBox.setValue(newLecture.comment);
+    GroupsListPage.addCommentBtn.click();
+    browser.waitUntil(() => GroupsListPage.commentConfirmation.isDisplayed());
   });
 
-  it('should click Dislike button', () => {
-    LecturePage.dislikeBtn.click();
+  it('should verify refresh button is clickable', () => {
+    expect(GroupsListPage.refreshCommentBtn.isClickable()).true;
   });
 
-  it('should click Like button', () => {
-    LecturePage.likeBtn.click();
-  });
-
-  it('should click Mark as understood button', () => {
-    LecturePage.markAsUnderstoodBtn.click();
-  });
-
-  it('should check Homework header', () => {
-    const actual = LecturePage.homeworkHeader.getText();
-    const expected = lectures.homeworkHeader;
-    expect(actual).eq(expected);
-  });
-
-  it('should check Homework description is existing', () => {
-    LecturePage.homeworkDescription.isExisting();
-  });
-
-  it('should fill out Send your Homework to review field', () => {
-    LecturePage.sendYourHomeworkToReviewField.setValue(lectures.homeworkInput);
-  });
-
-  it('should click Send homework to review', () => {
-    LecturePage.sendHomeworkToReviewBtn.click();
-  });
-
-  it('should fill out Comment field', () => {
-    LecturePage.commentField.setValue(lectures.commentField);
-  });
-
-  it('should click Add comment button', () => {
-    LecturePage.addCommentBtn.click();
-  });
+  it('should verify add comment button is disabled without a comment',() => {
+    expect(GroupsListPage.disabledCommentBtn.isEnabled()).false;
+  })
 });

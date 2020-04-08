@@ -1,20 +1,29 @@
 import RegistrationPage from '../_page/RegistrationPage';
-import HomePage from '../../_page/HomePage';
 import Notification from '../../_page/Notification';
-import {
-  userRegisteredData,
-  errorNotificationData
-} from '../_data/userRegistration.data';
+import { H1RegisterPage } from '../_data/userRegistration.data';
+import MainPage from '../../_page/MainPage';
 
-describe('USER REGISTRATION -- NEGATIVE -- DUPLICATE REGISTRATION', () => {
-  before('Go to register page from home page', () => {
-    HomePage.open();
-    HomePage.registrationLink.click();
-    browser.pause(1000);
+describe('NEW USER REGISTRATION -- DUPLICATE REGISTRATION', () => {
+  before('Open register page, register new user, confirm user created', () => {
+    RegistrationPage.open();
+    MainPage.verifyElementText(MainPage.header, H1RegisterPage);
+    RegistrationPage.registerNewUser();
+    Notification.successMsgDisplayed();
   });
 
-  it('should already registered user after submitting registration form get error notification', () => {
-    RegistrationPage.newUserRegisterVerifyH1(userRegisteredData);
-    browser.waitUntil(() => Notification.title.getText() === errorNotificationData, 3000);
+  it(' should open registration page', () => {
+    RegistrationPage.open();
+  });
+
+  it('should register user with same data', () => {
+    RegistrationPage.registerNewUser();
+  });
+
+  it('verify fail message', () => {
+    Notification.failMsgDisplayed();
+  });
+
+  it('should verify user still on register page', () => {
+    MainPage.verifyElementText(MainPage.header, H1RegisterPage);
   });
 });

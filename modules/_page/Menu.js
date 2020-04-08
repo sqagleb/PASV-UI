@@ -19,7 +19,7 @@ class Menu {
     return $('[qa="diary-link"]');
   }
 
-  get groupLink() {
+  get groupsLink() {
     return $('[qa="groups-link"]');
   }
 
