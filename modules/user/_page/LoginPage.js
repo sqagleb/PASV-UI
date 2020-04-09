@@ -21,8 +21,12 @@ class LoginPage extends AppPage {
     return $('//h4[@class="notification-title"]');
   }
 
-  get invalidEmailNotification(){
-    return $('//div[@class="invalid-feedback"]')
+  get invalidEmailNotification() {
+    return $('//div[@class="invalid-feedback"]');
+  }
+
+  get requiredNotification(){
+    return $('.invalid-feedback.w-auto.ml-2');
   }
 
   login(role) {

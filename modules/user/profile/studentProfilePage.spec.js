@@ -11,7 +11,7 @@ import { student } from '../_data/user.data';
 
 before(() => {
   LoginPage.login(student);
-  browser.waitUntil(() => MainPage.header.getText() === elementText.studentName);
+  MainPage.verifyElementText(MainPage.header, elementText.studentName);
 });
 
 describe('CHECK MAIN ELEMENTS ARE PRESENT ON PAGE', () => {
