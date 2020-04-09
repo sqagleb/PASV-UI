@@ -1,9 +1,10 @@
 import { expect } from 'chai';
-import LoginPage from '../../user/_page/LoginPage';
-import { admin, student } from '../../user/_data/user.data';
-import LogoutPage from '../../user/_page/LogoutPage';
-import ProfilePage from '../../user/_page/ProfilePage';
-import DailyReportsPage from '../_page/DailyReportsPage';
+import LoginPage from '../_page/LoginPage';
+import { admin, student } from '../_data/user.data';
+import LogoutPage from '../_page/LogoutPage';
+import ProfilePage from '../_page/ProfilePage';
+import DailyReportsPage from '../../diary/_page/DailyReportsPage';
+import CreateDailyReportsPage from '../../diary/_page/CreateDailyReportsPage';
 
 let beforeCoinsNumber = 0;
 let newCoinsNumber = 0;
@@ -13,6 +14,9 @@ let topCoinsNumber = 0;
 describe('SAVE COINS NUMBER BEFORE', () => {
   before(() => {
     LoginPage.login(student);
+    DailyReportsPage.open();
+    CreateDailyReportsPage.createNewDayReport();
+
   });
 
   it('should save current number of student coins from the Profile page', () => {
@@ -33,10 +37,12 @@ describe('APPROVE DAY REPORT BY ADMIN', () => {
   before(() => {
     LoginPage.login(admin);
     DailyReportsPage.open();
+    browser.pause(3000);
   });
 
   it('should approve day report', () => {
     DailyReportsPage.approveBtn.click();
+    browser.pause(3000);
   });
 
   after('should logout from admin', () => {

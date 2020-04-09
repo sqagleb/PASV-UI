@@ -14,6 +14,20 @@ before(() => {
   MainPage.verifyElementText(MainPage.header, elementText.studentName);
 });
 
+describe('VERIFY MENU LINKS', () => {
+
+  it('Should verify that Menu links are clickable', () => {
+
+    const menu = $$('[id=\'site-menu\'] a');
+    if(menu.length === 0){
+      throw new Error('No Elements Found');
+    }
+    menu.forEach(el => {
+      return expect(el.isClickable()).to.be.true;
+    })
+  });
+});
+
 describe('CHECK MAIN ELEMENTS ARE PRESENT ON PAGE', () => {
   it('should verify student chart pulse is displayed', () => {
     expect(ProfilePage.studentChart.isDisplayed()).true;
