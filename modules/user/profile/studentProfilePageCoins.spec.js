@@ -37,12 +37,10 @@ describe('APPROVE DAY REPORT BY ADMIN', () => {
   before(() => {
     LoginPage.login(admin);
     DailyReportsPage.open();
-    browser.pause(3000);
   });
 
   it('should approve day report', () => {
     DailyReportsPage.approveBtn.click();
-    browser.pause(3000);
   });
 
   after('should logout from admin', () => {
