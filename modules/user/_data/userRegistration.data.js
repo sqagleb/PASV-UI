@@ -19,11 +19,15 @@ const newUser = {
   englishLevel: 'Upper intermediate',
   country: 'Belarus',
 };
+const incorrectNamesArray = ['Vale ra', 'Валера', '11Valera', '!@#$%^&*()_+=`~/\,.?><|'] ;
+const incorrectCellPhoneArray = ['1234567890', '1234567890123', '1 2223334455','!@#$%^&*()_+=`~/\,.?><| ', '1222333445t']
+const incorrectEmailsArray = ['s nt@gmail.com', '@gmail.com', 'a@gmail', 'a@gmailcom', 'фывапп@gmail.com',
+  '!@#$^&*()_+=`~/\\,.?><|@gmail.com',
+  'qwertyuiopqwertyuiopqwertyuiopqwertyuiopqwertyuiopqwertyuiopqwert@gmail.com',
+  'student@qwertyuiopqwertyuiopqwertyuiopqwertyuiopqwertyuiopqwertyuiopqwer.com'];
+const incorrectPasswordArray = ['1234', '1234567890123456789012345678901']
+const emptyAboutInput = '';
+const emptyMyGoalsInput = '';
 
-const pageRegisterData = {
-  h1: 'User Register',
-  warningText: 'Profiles with fictitious or dummy data will be deleted.',
-  buttonText: 'Submit',
-};
-
-export { H1RegisterPage, newUser, pageRegisterData };
+export { H1RegisterPage, newUser, incorrectEmailsArray, incorrectNamesArray, incorrectCellPhoneArray,
+  incorrectPasswordArray, emptyAboutInput, emptyMyGoalsInput, };

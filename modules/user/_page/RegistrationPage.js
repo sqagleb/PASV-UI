@@ -46,6 +46,16 @@ class RegistrationPage extends AppPage {
   open() {
     super.open('https://stage.pasv.us/user/register');
   }
+  get requiredFieldsList(){
+    return $$('.invalid-feedback');
+  }
+  get invalidInputMsg(){
+    return $('//div[@class="invalid-feedback"]')
+  }
+
+  get warningRedFrameList(){
+    return $$('.is-invalid');
+  }
 
   // method for create new user
   registerNewUser() {
@@ -60,5 +70,13 @@ class RegistrationPage extends AppPage {
     this.englishLevelOption.selectByVisibleText(newUser.englishLevel);
     MainPage.smartClick(this.submitBtn);
   }
+
+  verifyFieldHighlightInRed(index){
+    MainPage.header.click();
+    browser.waitUntil(() =>
+      this.warningRedFrameList[index].isDisplayed() === true,
+      5000, `Field index[${index}] didn't highlight in red`);
+  }
+
 }
 export default new RegistrationPage();
