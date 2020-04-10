@@ -13,7 +13,7 @@ const keywords = {
 
 const links = {
   createDiary: '/diary/create',
-}
+};
 
   const menuLinks = [
     '/course',
@@ -21,7 +21,6 @@ const links = {
     '/group',
     '/diary'
   ];
-
 
 
 

@@ -28,6 +28,30 @@ describe('VERIFY MENU LINKS', () => {
   });
 });
 
+describe('VERIFY `STUDENT PASV` DROPDOWN MENU', () => {
+
+  it('Should verify that dropdown menu is clickable', () => {
+    expect(ProfilePage.userDropdown.isClickable()).true;
+  });
+
+  it('Should verify that dropdown menu is equal to Student Name', () => {
+    expect(ProfilePage.userDropdown.getText()).eq(student.name);
+  });
+
+  it('Should verify that `Profile` element of dropdown menu is clickable', () => {
+    ProfilePage.userDropdownClick();
+    expect(ProfilePage.userDropdownProfile.isClickable()).true;
+  });
+
+  it('Should verify `Settings` element of dropdown menu is clickable', () => {
+      expect(ProfilePage.userDropdownSettings.isClickable()).true;
+    });
+
+  it('Should verify `Logout` button exists in dropdown menu', () => {
+      expect(ProfilePage.logoutButton.isExisting()).true;
+  });
+});
+
 
 describe('CHECK MAIN ELEMENTS ARE PRESENT ON PAGE', () => {
   it('should verify student chart pulse is displayed', () => {
@@ -50,12 +74,13 @@ describe('CREATE DAY REPORT FROM PROFILE PAGE FUNCTIONALITY', () => {
   });
 
   it('should check Create Day Report button contains correct link', () => {
-    expect(ProfilePage.checkElemLink(ProfilePage.createDayReportBtn, links.createDiary))
+    expect(ProfilePage.checkElemLink(ProfilePage.createDayReportBtn, links.createDiary)).true;
   });
 });
 
 describe('SOCIAL NETWORKS INTEGRATION WITH USER PROFILE', () => {
   it('should verify Facebook icon contains correct link and opens new window on click', () => {
+    ProfilePage.userDropdownClick();
     expect(ProfilePage.checkElemLink(ProfilePage.facebookIcon, keywords.facebook)).true;
   });
 

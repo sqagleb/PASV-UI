@@ -53,6 +53,31 @@ class ProfilePage extends AppPage {
     return $$('[id=\'site-menu\'] a');
 }
 
+  get userDropdown () {
+    return $('[id=\'user-section\'] [class=\'dropdown-toggle nav-link\']');
+  }
+
+  get logoutButton () {
+    return $('[qa=\'logout-button\']');
+  }
+
+  get userDropdownProfile() {
+    return $('[qa=\'profile-link\'] button');
+  }
+
+  get userDropdownSettings () {
+    return $('[qa=\'settings-link\'] button');
+  }
+
+  get h1 () {
+    return $('//h1');
+  }
+
+
+  userDropdownClick() {
+    $('[id=\'user-section\'] [class=\'dropdown-toggle nav-link\']').click();
+  }
+
   open() {
     $('[class="dropdown-toggle nav-link"]').click();
     $('[qa="profile-link"] button').click();

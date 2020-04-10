@@ -32,7 +32,6 @@ describe('SAVE COINS NUMBER BEFORE', () => {
   });
 });
 
-
 describe('APPROVE DAY REPORT BY ADMIN', () => {
   before(() => {
     LoginPage.login(admin);
