@@ -15,4 +15,14 @@ const links = {
   createDiary: '/diary/create',
 }
 
-export { elementText, keywords, links };
+  const menuLinks = [
+    '/course',
+    '/flash',
+    '/group',
+    '/diary'
+  ];
+
+
+
+
+export { elementText, keywords, links, menuLinks};

@@ -1,12 +1,11 @@
 import { expect } from 'chai';
-
 import LoginPage from '../_page/LoginPage';
 import LogoutPage from '../_page/LogoutPage';
 import ProfilePage from '../_page/ProfilePage';
 import MainPage from '../../_page/MainPage';
-
-import { links, elementText, keywords } from '../_data/profilePage.data';
+import { links, elementText, keywords, menuLinks } from '../_data/profilePage.data';
 import { student } from '../_data/user.data';
+
 
 before(() => {
   LoginPage.login(student);
@@ -15,16 +14,20 @@ before(() => {
 
 describe('VERIFY MENU LINKS', () => {
 
-  it('Should verify that Menu links are clickable', () => {
+  it('Should verify that Menu Items are clickable and contain links', () => {
     const arrMenu = ProfilePage.menuItems;
+    const arrMenuLinks = menuLinks;
     if(arrMenu.length === 0){
       throw new Error('No Elements Found');
     }
-    arrMenu.forEach(el => {
-      return expect(el.isClickable()).true;
-    })
+    for(let i = 0; i < arrMenu.length; i++){
+      let menuItems  = arrMenu[i];
+      let menuLinks = arrMenuLinks[i];
+      expect((menuItems.getAttribute('href')).includes(menuLinks) && menuItems.isClickable()).true;
+    }
   });
 });
+
 
 describe('CHECK MAIN ELEMENTS ARE PRESENT ON PAGE', () => {
   it('should verify student chart pulse is displayed', () => {
