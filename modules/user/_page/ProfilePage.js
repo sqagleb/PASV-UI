@@ -45,8 +45,8 @@ class ProfilePage extends AppPage {
     return $('[class="justify-content-end collapse navbar-collapse"] span');
   }
 
-  checkElemLink(link, keyword) {
-    return link.getAttribute('href').includes(keyword) && link.getAttribute('target') === '_blank';
+  checkElemLink(element, keyword) {
+    return element.getAttribute('href').includes(keyword);
   }
 
   open() {
