@@ -16,11 +16,11 @@ before(() => {
 describe('VERIFY MENU LINKS', () => {
 
   it('Should verify that Menu links are clickable', () => {
-    const menu = $$('[id=\'site-menu\'] a');
-    if(menu.length === 0){
+    const arrMenu = ProfilePage.menuItems;
+    if(arrMenu.length === 0){
       throw new Error('No Elements Found');
     }
-    menu.forEach(el => {
+    arrMenu.forEach(el => {
       return expect(el.isClickable()).true;
     })
   });

@@ -49,6 +49,10 @@ class ProfilePage extends AppPage {
     return element.getAttribute('href').includes(keyword);
   }
 
+  get menuItems () {
+    return $$('[id=\'site-menu\'] a');
+}
+
   open() {
     $('[class="dropdown-toggle nav-link"]').click();
     $('[qa="profile-link"] button').click();
