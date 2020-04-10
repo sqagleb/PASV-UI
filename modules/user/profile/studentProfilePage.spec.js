@@ -39,11 +39,6 @@ describe('CREATE DAY REPORT FROM PROFILE PAGE FUNCTIONALITY', () => {
 });
 
 describe('SOCIAL NETWORKS INTEGRATION WITH USER PROFILE', () => {
-  it('should verify that page is correct', () => {
-    ProfilePage.open();
-    browser.waitUntil(() => MainPage.header.getText() === elementText.studentName);
-  });
-
   it('should verify Facebook icon contains correct link and opens new window on click', () => {
     expect(ProfilePage.checkElemLink(ProfilePage.facebookIcon, keywords.facebook)).true;
   });
