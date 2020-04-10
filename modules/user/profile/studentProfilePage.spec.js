@@ -1,13 +1,12 @@
 import { expect } from 'chai';
 
 import LoginPage from '../_page/LoginPage';
-import LogoutPage from "../_page/LogoutPage";
+import LogoutPage from '../_page/LogoutPage';
 import ProfilePage from '../_page/ProfilePage';
 import MainPage from '../../_page/MainPage';
 
-import { elementText, keywords } from '../_data/profilePage.data';
+import { links, elementText, keywords } from '../_data/profilePage.data';
 import { student } from '../_data/user.data';
-
 
 before(() => {
   LoginPage.login(student);
@@ -29,14 +28,13 @@ describe('CHECK MAIN ELEMENTS ARE PRESENT ON PAGE', () => {
 });
 
 describe('CREATE DAY REPORT FROM PROFILE PAGE FUNCTIONALITY', () => {
-  it('should check Create day report button exists and clickable', () => {
+  it('should check Create Day Report button exists and clickable', () => {
     browser.waitUntil(() => ProfilePage.createDayReportBtn.isDisplayed());
     expect(ProfilePage.createDayReportBtn.isClickable()).true;
   });
 
-  it('should check user was redirected to Create Day Report page', () => {
-    ProfilePage.createDayReportBtn.click();
-    browser.waitUntil(() => MainPage.header.getText() === elementText.createDayReportH1);
+  it('should check Create Day Report button contains correct link', () => {
+    expect(ProfilePage.checkElemLink(ProfilePage.createDayReportBtn, links.createDiary))
   });
 });
 
