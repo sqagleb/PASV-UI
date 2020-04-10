@@ -11,4 +11,8 @@ const keywords = {
   github: 'github',
 };
 
-export { elementText, keywords };
+const links = {
+  createDiary: '/diary/create',
+}
+
+export { elementText, keywords, links };
