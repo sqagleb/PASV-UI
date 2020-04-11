@@ -19,13 +19,13 @@ exports.config = {
   // NPM script (see https://docs.npmjs.com/cli/run-script) then the current working
   // directory is where your package.json resides, so `wdio` will be called from there.
   //
-  specs: ['./modules/**/*.spec.js'],
+  specs: ['./_tests/**/*.spec.js'],
   suites: {
-    cards: ['./modules/cards/**/*spec.js'],
-    courses: ['./modules/courses/**/*spec.js'],
-    diary: ['./modules/diary/**/*spec.js'],
-    groups: ['./modules/groups/**/*spec.js'],
-    user: ['./modules/user/**/*spec.js']
+    cards: ['./_tests/cards/**/*spec.js'],
+    courses: ['./_tests/courses/**/*spec.js'],
+    diary: ['./_tests/diary/**/*spec.js'],
+    groups: ['./_tests/groups/**/*spec.js'],
+    user: ['./_tests/user/**/*spec.js']
   },
   // Patterns to exclude.
   exclude: [
