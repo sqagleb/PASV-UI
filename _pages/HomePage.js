@@ -1,20 +1,20 @@
 import AppPage from './AppPage';
 
 class HomePage extends AppPage {
-  get header() {
-    return $('//h1');
-  }
-
-  get title() {
-    return $('//div[@class="container"]//span[@id="site-name"]');
-  }
-
   get loginLink() {
-    return $('//a[@qa="login-link"]');
+    return $('[qa="login-link"]');
   }
 
-  get registrationLink() {
-    return $('//a[@qa="register-link"]');
+  get registerLink() {
+    return $('[qa="register-link"]');
+  }
+
+  get paragraphBlocksList() {
+    return $$('.intro');
+  }
+
+  get supportEmail() {
+    return $('//small[@qa="app-slogan"]/a');
   }
 
   open() {
