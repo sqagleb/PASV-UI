@@ -28,7 +28,7 @@ describe('ADD QUIZ TO A RECENTLY CREATED GROUP', () => {
   it('should add any Quiz to the group', () => {
     GroupPage.editBtn.click();
     GroupPage.showAllBtn.scrollIntoView();
-    browser.pause(3000);
+    browser.pause(1300);
     MainPage.smartClick(GroupPage.showAllBtn);
     MainPage.smartClick(GroupPage.showAllBtn);
     MainPage.smartClick(GroupPage.addQuizBtn);
