@@ -1,9 +1,9 @@
-const name = "TEST-" + Math.random().toFixed(3);
+const name = 'TEST-GROUP-' + Math.random().toFixed(3);
 
 const newGroup = {
-  name: name,
+  name,
   description: 'test test test test test',
-  access: 'All'
+  access: 'All',
 };
 
 export { newGroup };

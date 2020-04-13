@@ -4,6 +4,7 @@ import Menu from './Menu';
 import LogoutPage from './LogoutPage';
 import MainPage from './MainPage';
 import { newGroup } from '../_data/groupCreate.data';
+import { newLecture } from '../_data/groupLecture.data';
 
 class GroupPage extends AppPage {
   get groupTitle() {
@@ -52,7 +53,11 @@ class GroupPage extends AppPage {
   }
 
   get saveBtn() {
-    return $('[type="submit"]')
+    return $('[type="submit"]');
+  }
+
+  get testLecture() {
+    return $(`//span[contains(text(),"${newLecture.name}")]`);
   }
 
   createNewGroup(role) {
