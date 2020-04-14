@@ -37,7 +37,7 @@ describe('CREATE NEW CARD -- POSITIVE', () => {
   });
 
   it('should check if a new card was created in the correct group', () => {
-    expect(CardsPage.titleOfCurrentGroup.getText()).equal(positive.groupName);
+    expect(MainPage.header.getText()).equal(positive.groupName);
   });
 
   after('logout', () => {

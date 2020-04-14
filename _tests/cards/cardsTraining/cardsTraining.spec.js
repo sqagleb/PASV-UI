@@ -7,7 +7,7 @@ import CardsTrainingPage from '../../../_pages/CardsTrainingPage';
 import CardsMainAndCompactViewPage from "../../../_pages/CardsMainAndCompactViewPage";
 import LogoutPage from "../../../_pages/LogoutPage";
 import { student } from '../../../_data/_user.data';
-import {pageTitle, waitingForApprovalData, progressBarAttribute, positive} from "../../../_data/newCard.data";
+import {pageTitle, progressBarAttribute, positive} from "../../../_data/newCard.data";
 
 let nrOfCards;
 
