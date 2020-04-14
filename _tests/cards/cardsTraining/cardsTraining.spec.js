@@ -2,12 +2,12 @@ import { expect } from 'chai';
 import LoginPage from '../../../_pages/LoginPage';
 import Menu from '../../../_pages/Menu';
 import MainPage from "../../../_pages/MainPage";
-import FlashCardsPage from '../../../_pages/FlashCardsPage';
+import CardsPage from '../../../_pages/CardsPage';
 import CardsTrainingPage from '../../../_pages/CardsTrainingPage';
 import CardsMainAndCompactViewPage from "../../../_pages/CardsMainAndCompactViewPage";
 import LogoutPage from "../../../_pages/LogoutPage";
 import { student } from '../../../_data/_user.data';
-import {pageTitle, waitingForApprovalData, progressBarAttribute} from "../../../_data/newCard.data";
+import {pageTitle, progressBarAttribute, positive} from "../../../_data/newCard.data";
 
 let nrOfCards;
 
@@ -16,26 +16,23 @@ describe('CARDS TRAINING', () => {
     LoginPage.login(student);
     Menu.cardsLink.click();
     MainPage.verifyElementText(MainPage.header, pageTitle);
-    //browser.waitUntil(() => MainPage.header.getText() === pageTitle);
   });
 
   it('should find `Test Group` group and click', () => {
-    FlashCardsPage.linkToGroup.scrollIntoView();
-    FlashCardsPage.linkToGroup.click();
-    MainPage.verifyElementText(MainPage.header,waitingForApprovalData.header);
-    //browser.waitUntil(() => CardsTrainingPage.groupTitle.getText() === waitingForApprovalData.header);
+    CardsPage.linkToGroup.scrollIntoView();
+    CardsPage.linkToGroup.click();
+    MainPage.verifyElementText(MainPage.header, positive.groupName);
   });
 
   it('should check number of cards in a group from CompactView page', () => {
-    FlashCardsPage.compactViewLink.waitForDisplayed();
-    FlashCardsPage.compactViewLink.click();
+    CardsPage.compactViewLink.waitForDisplayed();
+    CardsPage.compactViewLink.click();
     CardsMainAndCompactViewPage.compactViewFirstElement.waitForDisplayed();
     nrOfCards = CardsTrainingPage.cardsList.length;
   });
 
   it('should click `Training` link', () => {
-    //FlashCardsPage.trainingLink.waitForDisplayed();
-    FlashCardsPage.trainingLink.click();
+    CardsPage.trainingLink.click();
     browser.waitUntil( () => CardsTrainingPage.startTrainingBtn.isDisplayed());
   });
 

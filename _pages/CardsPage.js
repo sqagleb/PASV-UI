@@ -1,12 +1,12 @@
 import AppPage from './AppPage';
 
-class FlashCardsPage extends AppPage {
+class CardsPage extends AppPage {
   open() {
     super.open('https://stage.pasv.us/flash');
   }
 
   get groupName() {
-    return browser.$('//a[text()="Test Group Feb 16"]');
+    return browser.$('//a[text()="TestGroup"]');
   }
 
   get createNewCardBtn() {
@@ -39,10 +39,6 @@ class FlashCardsPage extends AppPage {
     return browser.$('.modal-body button.close');
   }
 
-  get titleOfCurrentGroup() {
-    return browser.$('h1');
-  }
-
   get firstCreatedCard() {
     return browser.$('//div[@qa="flash-group-item"]//a');
   }
@@ -57,19 +53,6 @@ class FlashCardsPage extends AppPage {
 
   get lastCreatedCardStatus() {
     return browser.$('//div[@class = "row"]//span[contains(@class,"badge")]');
-  }
-
-  get profileDropdown() {
-    return browser.$('//a[@class = "dropdown-toggle nav-link"]');
-  }
-
-  get logoutLink() {
-    return browser.$('.dropdown-menu button[qa="logout-button"]');
-  }
-
-  //testing one of the cards
-  get h1LastCreated() {
-    return browser.$('h1');
   }
 
   get mainViewLink() {
@@ -101,9 +84,8 @@ class FlashCardsPage extends AppPage {
   }
 
   get linkToGroup() {
-    // return browser.$('=TestGroup');  - looks cool, but we decided to use other standard in the whole project
-    return browser.$('//h4[@qa="name"]//a[text()="TestGroup"]');  //"Test Group Feb 16"]');
+    return browser.$('//h4[@qa="name"]//a[text()="TestGroup"]');
   }
 }
 
-export default new FlashCardsPage();
+export default new CardsPage();

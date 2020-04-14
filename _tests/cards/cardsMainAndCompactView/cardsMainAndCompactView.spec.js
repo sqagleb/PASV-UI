@@ -1,25 +1,23 @@
 import { expect } from 'chai';
 import LoginPage from '../../../_pages/LoginPage';
 import MainAndCompactViewPage from '../../../_pages/CardsMainAndCompactViewPage';
-import FlashCardsPage from '../../../_pages/FlashCardsPage';
+import CardsPage from '../../../_pages/CardsPage';
 import MainPage from "../../../_pages/MainPage";
 import LogoutPage from "../../../_pages/LogoutPage";
 import { student } from '../../../_data/_user.data';
-import {pageTitle, waitingForApprovalData} from '../../../_data/newCard.data';
+import {pageTitle, positive, waitingForApprovalData} from '../../../_data/newCard.data';
 
 describe('CARDS MAIN VIEW AND COMPACT VIEW', () => {
   before('login as a student', () => {
     LoginPage.login(student);
-    FlashCardsPage.open();
+    CardsPage.open();
     MainPage.verifyElementText(MainPage.header, pageTitle);
-    //browser.waitUntil( () => MainPage.header.getText() === pageTitle);
   });
 
   it('should find `Test Group` group and click', () => {
-    FlashCardsPage.linkToGroup.scrollIntoView();
-    FlashCardsPage.linkToGroup.click();
-    MainPage.verifyElementText(MainPage.header, waitingForApprovalData.header);
-    //browser.waitUntil(() => MainPage.header.getText() === waitingForApprovalData.header);
+    CardsPage.linkToGroup.scrollIntoView();
+    CardsPage.linkToGroup.click();
+    MainPage.verifyElementText(MainPage.header, positive.groupName);
   });
 
   it('should redirect to `Main view`', () => {

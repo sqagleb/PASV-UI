@@ -1,9 +1,6 @@
 import AppPage from './AppPage';
 
 class CardsTrainingPage extends AppPage {
-  get groupTitle() {
-    return browser.$('h1');
-  }
 
   get startTrainingBtn() {
     return browser.$('button[class="btn btn-secondary btn-sm"]');
